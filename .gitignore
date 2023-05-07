@@ -1,0 +1,86 @@
+#----------myspring-----------#
+myspring/HELP.md
+myspring/target/
+!./myspring/.mvn/wrapper/maven-wrapper.jar
+!./myspring/**/src/main/**/target/
+!./myspring/**/src/test/**/target/
+
+### STS ###
+myspring/.apt_generated
+myspring/.classpath
+myspring/.factorypath
+myspring/.project
+myspring/.settings
+myspring/.springBeans
+myspring/.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+myspring/nbproject/private/
+myspring/nbbuild/
+myspring/dist/
+myspring/nbdist/
+myspring/.nb-gradle/
+myspringbuild/
+!./myspring/**/src/main/**/build/
+!./myspring/**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+
+#----------myspring-----------#
+
+
+#----------AngularTest-----------#
+
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+AngularTest/dist
+AngularTest/tmp
+AngularTest/out-tsc
+AngularTest/bazel-out
+
+# Node
+AngularTest/node_modules
+AngularTest/npm-debug.log
+AngularTest/yarn-error.log
+
+# IDEs and editors
+AngularTest/.idea/
+AngularTest/.project
+AngularTest/.classpath
+AngularTest/.c9/
+AngularTest/*.launch
+AngularTest/.settings/
+AngularTest/*.sublime-workspace
+
+# Visual Studio Code
+AngularTest/.vscode/*
+!AngularTest/.vscode/settings.json
+!AngularTest/.vscode/tasks.json
+!AngularTest/.vscode/launch.json
+!AngularTest/.vscode/extensions.json
+AngularTest/.history/*
+
+# Miscellaneous
+AngularTest/.angular/cache
+AngularTest/.sass-cache/
+AngularTest/connect.lock
+AngularTest/coverage
+AngularTest/libpeerconnection.log
+AngularTest/testem.log
+AngularTest/typings
+
+# System files
+AngularTest/.DS_Store
+AngularTest/Thumbs.db
+
+#----------AngularTest-----------#
