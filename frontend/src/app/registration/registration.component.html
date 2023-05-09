@@ -1,0 +1,158 @@
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+    <style>
+        .background-radial-gradient {
+            background-color: hsl(218, 41%, 15%);
+            background-image: radial-gradient(650px circle at 0% 0%,
+                    hsl(218, 41%, 35%) 15%,
+                    hsl(218, 41%, 30%) 35%,
+                    hsl(218, 41%, 20%) 75%,
+                    hsl(218, 41%, 19%) 80%,
+                    transparent 100%),
+                radial-gradient(1250px circle at 100% 100%,
+                    hsl(218, 41%, 45%) 15%,
+                    hsl(218, 41%, 30%) 35%,
+                    hsl(218, 41%, 20%) 75%,
+                    hsl(218, 41%, 19%) 80%,
+                    transparent 100%);
+        }
+
+        #radius-shape-1 {
+            height: 220px;
+            width: 220px;
+            top: -60px;
+            left: -130px;
+            background: radial-gradient(#44006b, #a72fed);
+            overflow: hidden;
+        }
+
+        #radius-shape-2 {
+            border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+            bottom: -60px;
+            right: -110px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#44006b, #ad1fff);
+            overflow: hidden;
+        }
+
+        .bg-glass {
+            background-color: hsla(0, 13%, 88%, 0.9) !important;
+            backdrop-filter: saturate(200%) blur(25px);
+        }
+    </style>
+
+    <nav class="display-5 fw-bold text-center fixed-top"
+        style=" font-weight:bolder;color: aliceblue; background-color: rgba(80, 104, 168, 0.918); padding:15px;">Welcome
+        to the
+        Fitness Tracker App</nav>
+
+
+    <div class="text-lg-center container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                    Fitness Tracker <br />
+                    <span style="color: hsl(218, 81%, 75%)">Live the healthy Life</span>
+                </h1>
+                <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    Transform Your Health and Fitness with Our Comprehensive Fitness Tracker: Reach Your Goals and Stay
+                    Motivated!
+                </p>
+            </div>
+
+            <!-- <input type="text" [(ngModel)]="user.name">
+            <p>{{user.name}}</p> -->
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card bg-glass">
+                    <div class="h1 mt-2">Register</div>
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <form #myForm="ngForm" (submit)="onSubmit()">
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <!-- name -->
+                            <div class="row">
+                                <div class="form-outline mb-4">
+                                    <input name="username" [(ngModel)]="user.username" placeholder="Enter your name"
+                                        class="form-control" required />
+                                </div>
+                                <!-- email -->
+
+                                <div class="form-outline">
+                                    <input autocomplete="username" placeholder="Enter your email address"
+                                        class="form-control col-md-6 mb-4" id="emailInput" type="email" name="email"
+                                        [(ngModel)]="user.email" required #emailInput="ngModel"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                        [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
+                                </div>
+
+                                <!-- Password input -->
+                                <div class="form-outline mb-4">
+                                    <input name="password" [(ngModel)]="user.password" autocomplete="current-password"
+                                        placeholder="Enter your password" type="password" id="form2Example4"
+                                        class="form-control" required />
+                                </div>
+
+                                <!-- height -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input name="height" [(ngModel)]="user.height"
+                                            placeholder="Enter your height in cm" type="number" id="form3Example3"
+                                            class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input name="weight" [(ngModel)]="user.weight"
+                                            placeholder="Enter your weight in kg" type="number" id="form3Example2"
+                                            class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="form-outline">
+                                    <div class="form-outline">
+                                        <input name="age" [(ngModel)]="user.age" placeholder="Enter your age"
+                                            type="number" id="form3Example4" class="form-control" required />
+                                    </div>
+                                </div>
+                                <!-- gender -->
+                                <div class="form-outline mt-4">
+                                    select gender<select name="genderSelect" id="genderSelect" [(ngModel)]="user.gender" class="form-select">
+                                        <option value="select" hidden selected>Select your gender</option>
+                                        <option *ngFor="let genders of genderList">{{genders.label}}</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+
+
+                            <!-- Checkbox -->
+                            <!-- <div class="form-check d-flex justify-content-center mb-4">
+                                <input placeholder="Enter your" class="form-check-input me-2" type="checkbox" value=""
+                                    id="form2Example33" checked />
+                                <label class="form-check-label" for="form2Example33">
+                                    Subscribe to our newsletter
+                                </label>
+                            </div> -->
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mt-5 mb-4 p-4
+                            py-3">
+                                Sign up
+                            </button>
+                            <p><b>OR</b></p>
+                            <button (click)="goToLogin()" type="submit" class="btn btn-primary btn-block mb-4 p-4
+                            py-3">Login</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section: Design Block -->

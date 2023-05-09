@@ -1,0 +1,35 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+
+section {
+  height: 100%;
+
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 2px solid black; */
+}
+.btn{
+  max-width: 250px;
+  display: flexbox;
+  align-self: center;
+}

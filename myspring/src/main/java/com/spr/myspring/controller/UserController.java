@@ -32,6 +32,7 @@ public class UserController {
             return ResponseEntity.badRequest().body("User Already Exist!");
         }       
     }
+// we can use email here
 
     @PostMapping("/user/login")
     public ResponseEntity<String> login(@RequestBody User user) {
