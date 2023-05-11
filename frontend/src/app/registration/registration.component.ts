@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TitleService } from '../title.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -17,10 +18,9 @@ export class RegistrationComponent {
   password: string = "";
   height: number = 0;
   weight: number = 0;
-  gender: string = '';
+  gender!: string;
   age!: Date;
-  sel: string = "select";
-  genderList = [{ value: "Male", label: "Male" }, { value: "Female", label: "Female" }, { value: "other", label: "other" }];
+ 
   data: any = { name: this.username, email: this.email, password: this.password, height: this.height, weight: this.weight, age: this.age, gender: this.gender };
 
   constructor(private router: Router, private title: TitleService, private http: HttpClient) {
@@ -36,7 +36,14 @@ export class RegistrationComponent {
   onSubmit() {
     this.http.post('http://localhost:8080/user/register', this.user).subscribe(response => {
       console.log(response);
+      
     });
+  }
+  // ngOnInit(){
+  //   this.user.gender = "select an option";
+  // }
+  changeSelection($target:any){
+    this.user.gender = $target.value;
   }
 
 

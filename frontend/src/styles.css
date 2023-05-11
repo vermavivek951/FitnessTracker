@@ -1,1 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+
+.row-btns {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.custom-container {
+  height: 100vh;
+  /* border: 12px solid black; */
+  /* position: relative; */
+  padding: 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+@media (max-width: 650px) or (max-height: 650px) {
+  .h-custom {
+    height: 100%;
+
+  }
+
+  .custom-nav {
+    display: none;
+  }
+  .custom-container{
+    height: 100%;
+  }
+
+
+}
+
+
+.is-invalid {
+  border-color: red;
+}
+
+
+
+
+.nav {
+  align-items: center;
+  justify-content: center;
+}
+
+.background-radial-gradient {
+  height: 100%;
+  width: 100%;
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%),
+    radial-gradient(1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%);
+}
+
+#radius-shape-1 {
+  height: 220px;
+  width: 220px;
+  top: -60px;
+  left: -130px;
+  background: radial-gradient(#44006b, #a72fed);
+  overflow: hidden;
+}
+
+.bg-glass {
+  background-color: hsla(0, 12%, 92%, 0.9) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
