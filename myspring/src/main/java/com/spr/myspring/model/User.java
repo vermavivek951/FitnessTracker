@@ -98,10 +98,7 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    // Getters and setters
-    // ...
-
+    
     public String getUsername() {
         return username;
     }

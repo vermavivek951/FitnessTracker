@@ -27,7 +27,8 @@ public class UserController {
 
     @PostMapping("/user/register")
     public ResponseEntity<Map<String,String>> registerUser(@RequestBody User user) {
-        User existingUser = userRepository.findByUsername(user.getUsername());
+        //User existingUser = userRepository.findByUsername(user.getUsername());
+        User existingUser = userRepository.findByEmail(user.getEmail());
         Map<String, String> response = new HashMap<>();
         if (existingUser == null) {
             userRepository.save(user);
@@ -42,7 +43,8 @@ public class UserController {
 
     @PostMapping("/user/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody User user) {
-        User existingUser = userRepository.findByUsername(user.getUsername());
+        //User existingUser = userRepository.findByUsername(user.getUsername());
+        User existingUser = userRepository.findByEmail(user.getEmail());
         Map<String, String> response = new HashMap<>();
         if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
             response.put("message", "Login Successful");
