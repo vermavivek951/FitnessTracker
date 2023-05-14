@@ -24,22 +24,15 @@
         <!-- registration form -->
         <div class="col-md-6">
 
-            <div class="align-items-center mt-4 glass-container card bg-glass" [ngClass]="{'isEnabled':isDarkEnabled, 'isDisabled': !isDarkEnabled}">
+            <div class="align-items-center mt-4 card">
                 <div class="d-flex align-items-center mt-4 mb-4 w-25 ">
                     <span class="h1">Register</span>
-                <!-- for dark mode -->
-                <label class="slider-box" [ngClass]="{'isDisabled': !isDarkEnabled }" for="toogle">
-                    <input (click)="toogle()" id="toogle" type="checkbox" class="checkbox">
-                    <span [ngClass]="{'isEnabled':isDarkEnabled }" class="toogle-btn">{{isDarkEnabled}}</span>
-                </label>
                 </div>
-                
-                
                 <div class="card-body py-3">
-                    
+
                     <form class="px-4" #myForm="ngForm" (submit)="onSubmit()">
                         <!-- 2 column grid layout with text inputs for the first and last names -->
-                        <div class="row" >
+                        <div class="row">
                             <div class="form-outline">
                                 <input name="username" [(ngModel)]="user.username" placeholder="Enter your name"
                                     class="form-control mb-4" required />

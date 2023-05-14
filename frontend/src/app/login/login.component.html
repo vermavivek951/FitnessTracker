@@ -20,16 +20,12 @@
 
     <div class="col-md-6">
 
-      <div class="align-items-center mt-4 glass-container card bg-glass" [ngClass]="{'isEnabled':darkEnabled, 'isDisabled': !darkEnabled }">
+      <div class="align-items-center glass-container card bg-glass" >
 
         <div class="d-flex align-items-center mt-4 mb-4 w-25">
           <span class="h1">Login</span>
-          <label class="slider-box">
-            <input (click)="toogle()" type="checkbox" class="checkbox">
-            <span [ngClass]="{'isEnabled': darkEnabled}" class="toogle-btn"></span>
-          </label>
         </div>
-        <form class="custom px-4 py-5  my-auto" (submit)="OnLoginSubmit()">
+        <form class="custom px-4 py-4  my-auto" (submit)="OnLoginSubmit()">
 
           <!-- 2 column grid layout with text inputs for the first and last names -->
           <!-- container -->

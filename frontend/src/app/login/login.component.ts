@@ -4,23 +4,18 @@ import { Router } from '@angular/router';
 import { TitleService } from '../title.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
-import { DarkModeService } from '../dark-mode.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private darkMode: DarkModeService, private http: HttpClient, private router: Router, private title: TitleService, private authService : AuthService) { }
+  constructor( private http: HttpClient, private router: Router, private title: TitleService, private authService : AuthService) { }
   username!: string;
   password!: string;
   loginError!:string;
-  darkEnabled = this.darkMode.isDarkEnabled;
   user = { username: this.username, password: this.password };
 
-  toogle(){
-    this.darkEnabled = !this.darkEnabled;
-  }
 
   OnLoginSubmit() {
     this.authService.login(this.user);
