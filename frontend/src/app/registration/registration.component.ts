@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TitleService } from '../title.service';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { DarkModeService } from '../dark-mode.service';
 
 
 @Component({
@@ -11,6 +12,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
+  constructor(private darkMode:DarkModeService, private router: Router, private title: TitleService, private http: HttpClient) {
+    console.log(this.user);
+  }
   user: any = {};
   id!: number;
   username!: string;
@@ -20,11 +24,12 @@ export class RegistrationComponent {
   weight: number = 0;
   gender!: string;
   age!: Date;
- 
+  isDarkEnabled=this.darkMode.isDarkEnabled;
   data: any = { name: this.username, email: this.email, password: this.password, height: this.height, weight: this.weight, age: this.age, gender: this.gender };
 
-  constructor(private router: Router, private title: TitleService, private http: HttpClient) {
-    console.log(this.user);
+  
+  toogle(){
+    this.isDarkEnabled = !this.isDarkEnabled;
   }
   // to set the title and navigate to Login Page
   goToLogin() {

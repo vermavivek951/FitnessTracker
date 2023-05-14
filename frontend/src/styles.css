@@ -71,13 +71,13 @@ body {
   height: 100%;
   width: 100%;
   background-color: hsl(218, 41%, 15%);
-  background-image: radial-gradient(650px circle at 0% 0%,
-      hsl(218, 41%, 35%) 15%,
+  background-image: radial-gradient(circle at 0% 0%,
+      hsl(219, 41%, 29%) 15%,
       hsl(218, 41%, 30%) 35%,
       hsl(218, 41%, 20%) 75%,
       hsl(218, 41%, 19%) 80%,
       transparent 100%),
-    radial-gradient(1250px circle at 100% 100%,
+    radial-gradient(circle at 100% 100%,
       hsl(218, 41%, 45%) 15%,
       hsl(218, 41%, 30%) 35%,
       hsl(218, 41%, 20%) 75%,
@@ -94,7 +94,46 @@ body {
   overflow: hidden;
 }
 
-.bg-glass {
-  background-color: hsla(0, 12%, 92%, 0.9) !important;
+.bg-glass.isEnabled {
+  color: #eee;
+  background-color: #262228d5;
   backdrop-filter: saturate(200%) blur(25px);
+}
+
+.bg-glass.isDisabled{
+  color: rgb(15, 139, 166);
+  background-color: rgba(254, 253, 255, 0.775);
+}
+
+
+
+.checkbox{
+  display: none;
+}
+
+.slider-box{
+  margin-left: 45%;
+  min-width: 60px;
+  height: 25px;
+  background-color: rgb(106, 102, 99);
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.slider-box.isDisabled{
+  background-color: rgb(62, 62, 98);
+}
+
+.toogle-btn.isEnabled{
+  background-color: rgb(71, 68, 66);
+  transform: translateX(200%);
+}
+
+.toogle-btn{
+  background-color: aquamarine;
+  display: inline-block;
+  height: 25px;
+  width: 20px;
+  border-radius: 23px; 
+  transition: 0.4s;
 }

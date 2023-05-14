@@ -1,69 +1,73 @@
 <!-- Section: Design Block -->
-<section style="min-height: 100vh;"  class="background-radial-gradient">
+<section style="min-height: 100vh;" class="background-radial-gradient">
   <nav class="custom-nav display-5 fixed-top fw-bold  text-center "
-    style="justify-content: center; font-weight:bolder;color: aliceblue; background-color: rgba(80, 104, 168, 0.918); padding:15px;">Welcome to
+    style="justify-content: center; font-weight:bolder;color: aliceblue; background-color: rgba(80, 104, 168, 0.918); padding:15px;">
+    Welcome to
     the Fitness Tracker App</nav>
-    <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-        <div id="radius-shape-2" class="position-fixed shadow-5-strong"></div>
+  <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+  <div id="radius-shape-2" class="position-fixed shadow-5-strong"></div>
 
-    <div class="custom-container px-md-4">
-      <div class="col-md-6" style="z-index: 10">
-        <h1 class="text-lg-center my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-          Fitness Tracker <br />
-          <span style="color: hsl(218, 81%, 75%)">Live the healthy Life</span>
-        </h1>
-        <p class="mb-4 opacity-70 mr-4" style="color: hsl(218, 81%, 85%)">
-          Transform Your Health and Fitness with Our Comprehensive Fitness Tracker: Reach Your Goals and Stay Motivated!
-        </p>
-      </div>
+  <div class="custom-container px-md-4">
+    <div class="col-md-6" style="z-index: 10">
+      <h1 class="text-lg-center my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+        Fitness Tracker <br />
+        <span style="color: hsl(218, 81%, 75%)">Live the healthy Life</span>
+      </h1>
+      <p class="mb-4 opacity-70 mr-4" style="color: hsl(218, 81%, 85%)">
+        Transform Your Health and Fitness with Our Comprehensive Fitness Tracker: Reach Your Goals and Stay Motivated!
+      </p>
+    </div>
 
-      <div class="col-md-6">
+    <div class="col-md-6">
 
-        <div class="my-4 mx-5 glass-container card bg-glass">
-          <div class="text-center h1 mt-2" style="color:rgba(80, 104, 168, 0.918)">Login</div>
-          <div class="card-body py-5">
-            <form class="custom px-4  my-auto" (submit)="OnLoginSubmit()">
+      <div class="align-items-center mt-4 glass-container card bg-glass" [ngClass]="{'isEnabled':darkEnabled, 'isDisabled': !darkEnabled }">
 
-              <!-- 2 column grid layout with text inputs for the first and last names -->
-              <!-- container -->
-              <div class="row">
-                <!-- emial -->
-                <div class="form-outline">
-                  <input placeholder="Enter your username" class="form-control mb-4" name="username" [(ngModel)]="user.username">
-                  </div>
-                  <!-- <input placeholder="Enter your username" class="form-control col-md-6 mb-4 p-2" id="emailInput"
-                    type="name" name="username" [(ngModel)]="user.username" required #emailInput="ngModel"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
-                </div> -->
+        <div class="d-flex align-items-center mt-4 mb-4 w-25">
+          <span class="h1">Login</span>
+          <label class="slider-box">
+            <input (click)="toogle()" type="checkbox" class="checkbox">
+            <span [ngClass]="{'isEnabled': darkEnabled}" class="toogle-btn"></span>
+          </label>
+        </div>
+        <form class="custom px-4 py-5  my-auto" (submit)="OnLoginSubmit()">
 
-                <!-- Password input -->
-                <div class="form-outline">
-                  <input name="password" [(ngModel)]="user.password" placeholder="Enter your password" type="password" id="form3Example4" class="form-control p-2"
-                    required />
-                </div>
-              </div>
+          <!-- 2 column grid layout with text inputs for the first and last names -->
+          <!-- container -->
+          <div class="row">
+            <!-- emial -->
+            <div class="form-outline">
+              <input placeholder="Enter your email" class="form-control mb-4 p-2 " id="emailInput" type="name"
+                name="username" [(ngModel)]="user.username" required #emailInput="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
+            </div>
 
-              <div class="row-btns">
-                <div class="">
-                  <button type="submit" class="btn btn-danger">
+            <!-- Password input -->
+            <div class="form-outline">
+              <input name="password" [(ngModel)]="user.password" placeholder="Enter your password" type="password"
+                id="form3Example4" class="form-control p-2 mb-4" required />
+            </div>
+          </div>
+
+          <div class="row-btns">
+            <div class="">
+              <button type="submit" class="btn btn-danger">
                 Login
               </button>
-              
-                </div>
-                <label class="text-secondary">or</label>
-                <div class="">
-                  <a (click)="sendToRegisterPage()" type="submit" class="text-primary text-decoration-none">
+
+            </div>
+            <label class="text-secondary">or</label>
+            <div class="">
+              <a (click)="sendToRegisterPage()" type="submit" class="text-primary text-decoration-none">
                 Sign up
-                  </a>
-                </div>
-              </div>
-              <div *ngIf="loginError" class="mt-2 alert alert-danger">
-              {{loginError}}
-              </div>
-            </form>
+              </a>
+            </div>
           </div>
-        </div>
+          <div *ngIf="loginError" class="mt-2 alert alert-danger">
+            {{loginError}}
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 </section>
