@@ -7,8 +7,15 @@ import { TitleService } from './title.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private title: TitleService){}
-  ngOnInit(){
-    this.title.setTitle("Home");
+  // constructor(private title: TitleService){}
+  // ngOnInit(){
+  //   this.title.setTitle("Home");
+  // }
+
+  title = 'admin-panel-layout';
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 }
