@@ -2,11 +2,10 @@
 
 // package com.spr.myspring.model;
 
-// import com.spr.myspring.model.User;
+// //import com.spr.myspring.model.User;
 // import java.util.Date;
 // import java.util.concurrent.TimeUnit;
 
-// import jakarta.persistence.ElementCollection;
 // import jakarta.persistence.Entity;
 // import jakarta.persistence.GeneratedValue;
 // import jakarta.persistence.GenerationType;
