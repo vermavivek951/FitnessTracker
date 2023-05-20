@@ -1,32 +1,16 @@
 package com.spr.myspring.model;
 
+import java.util.Set;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
-/* 
-1. User
-
-- id
-
-- name
-
-- email
-
-- password
-
-- height
-
-- weight
-
-- age
-
-- gender
- * 
- */
 
 @Entity
 public class User {
@@ -41,6 +25,8 @@ public class User {
     private int age;
     private String gender;
 
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Workout> workouts;
 
     //constructors
     public User() {

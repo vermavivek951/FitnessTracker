@@ -99,7 +99,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{id}/workouts")
+    @PostMapping("/user/{id}/workouts")
     public Workout addWorkout(Workout workout) {
         return workoutRepository.save(workout);
     }

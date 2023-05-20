@@ -2,57 +2,44 @@
 
 package com.spr.myspring.model;
 
-//import com.spr.myspring.model.User;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-
-
-
-/*
- * Workout:
-- id
-- user_id
-- date
-- duration
-- notes
- */
-
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Workout {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-    @ManyToMany
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id",insertable=false, updatable=false)
     private User user;
 
-    private Long user_id;
+    private UUID user_id;
     private Date date;
-    private TimeUnit duration;
+    private Long duration;
     private String notes;
 
 
-    public Workout(Long user_id, Date date, TimeUnit duration, String notes) {
+    public Workout(UUID user_id, Date date, Long duration, String notes) {
         this.user_id = user_id;
         this.date = date;
         this.duration = duration;
         this.notes = notes;
     }    
 
-    public Long getUser_id() {
+    public UUID getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Long user_id) {
+    public void setUser_id(UUID user_id) {
         this.user_id = user_id;
     }
 
@@ -64,11 +51,11 @@ public class Workout {
         this.date = date;
     }
 
-    public TimeUnit getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
-    public void setDuration(TimeUnit duration) {
+    public void setDuration(Long duration) {
         this.duration = duration;
     }
 
