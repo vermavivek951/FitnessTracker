@@ -2,8 +2,10 @@
 
 package com.spr.myspring.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,12 +25,15 @@ public class Workout {
     private User user;
 
     private UUID user_id;
-    private Date date;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
+
     private Long duration;
     private String notes;
 
 
-    public Workout(UUID user_id, Date date, Long duration, String notes) {
+    public Workout(UUID user_id, LocalDate date, Long duration, String notes) {
         this.user_id = user_id;
         this.date = date;
         this.duration = duration;
@@ -43,11 +48,11 @@ public class Workout {
         this.user_id = user_id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

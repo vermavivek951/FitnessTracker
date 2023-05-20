@@ -5,6 +5,7 @@ import com.spr.myspring.repository.WorkoutRepository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,7 +101,8 @@ public class UserController {
     }
 
     @PostMapping("/user/{id}/workouts")
-    public Workout addWorkout(Workout workout) {
+    public Workout addWorkout(@PathVariable("id") UUID id , @RequestBody Workout workout) {
+        workout.setUser_id(id);
         return workoutRepository.save(workout);
     }
 
