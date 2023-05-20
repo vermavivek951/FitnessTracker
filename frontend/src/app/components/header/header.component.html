@@ -1,0 +1,30 @@
+<mat-toolbar>
+
+  <mat-toolbar-row class="justify-content-between">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Welcome to Fitness Tracking Portal</span>
+    <div class="mr-2 ml-auto">
+      <ul class="m-0 d-flex flex-direction-row align-items-center">
+
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+            <img src="../../assets/icon/user.png" alt="" class="user-image mr-1 p-2" />
+
+            {{userName}}
+            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+
+          </button>
+          <mat-menu class="position-relative" #menu="matMenu">
+            <button (click)="goToLogin()" mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              <a style="text-decoration: none; color:red">Logout</a>
+            </button>
+          </mat-menu>
+
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

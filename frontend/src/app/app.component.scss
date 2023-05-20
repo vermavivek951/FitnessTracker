@@ -1,7 +1,10 @@
 :host {
+  
     display: flex;
     flex-direction: column;
     height: 100%;
+    color: rgb(91, 131, 131);
+    z-index:-1;
   }
   
   mat-drawer {
