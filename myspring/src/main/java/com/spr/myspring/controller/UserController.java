@@ -1,6 +1,7 @@
 package com.spr.myspring.controller;
 
 import com.spr.myspring.repository.UserRepository;
+import com.spr.myspring.repository.WorkoutRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.spr.myspring.model.User;
+import com.spr.myspring.model.Workout;
 
 /*
  * import org.mindrot.jbcrypt.BCrypt;
@@ -40,6 +42,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private WorkoutRepository workoutRepository;
 
     @PostMapping("/user/register")
     public ResponseEntity<Map<String,String>> registerUser(@RequestBody User user) {
@@ -94,4 +98,12 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/user/{id}/workouts")
+    public Workout addWorkout(Workout workout) {
+        return workoutRepository.save(workout);
+    }
+
+
+    
 }
