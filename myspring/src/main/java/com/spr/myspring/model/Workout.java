@@ -3,16 +3,20 @@
 package com.spr.myspring.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Workout {
@@ -32,6 +36,12 @@ public class Workout {
     private Long duration;
     private String notes;
 
+    @OneToMany(mappedBy = "workout" , fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Exercise> excercises;
+
+    public Workout() {
+        //default constructor required by JPA
+    }
 
     public Workout(UUID user_id, LocalDate date, Long duration, String notes) {
         this.user_id = user_id;
@@ -70,8 +80,6 @@ public class Workout {
 
     public void setNotes(String notes) {
         this.notes = notes;
-    }
-
-    
+    }    
 }
 

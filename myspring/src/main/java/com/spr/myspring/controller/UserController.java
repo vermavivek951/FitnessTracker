@@ -21,20 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.spr.myspring.model.User;
 import com.spr.myspring.model.Workout;
 
-/*
- * import org.mindrot.jbcrypt.BCrypt;
-
-public class PasswordHashingExample {
-    public static void main(String[] args) {
-        String password = "myPassword123";
-        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        
-        // Store the hashed password in your database
-        System.out.println("Hashed Password: " + hashedPassword);
-    }
-}
-
- */
 
 @RestController
 @RequestMapping("/")
@@ -86,7 +72,6 @@ public class UserController {
 
     @GetMapping("/users")
     public Iterable<User> retrieveAllUsers() {
-        // retrieve all users; check the return type too
         return userRepository.findAll();
     }
 
@@ -105,7 +90,4 @@ public class UserController {
         workout.setUser_id(id);
         return workoutRepository.save(workout);
     }
-
-
-    
 }
