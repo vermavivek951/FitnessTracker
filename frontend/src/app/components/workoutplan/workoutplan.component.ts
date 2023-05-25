@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { TitleService } from 'app/services/title.service';
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -22,14 +23,16 @@ export interface PeriodicElement {
 })
 export class WorkoutplanComponent implements OnInit {
   show: string = "btns";
-
   panelOpenState = false;
   displayedColumns: string[] = ['workoutName', 'workoutType', 'workoutVideo', 'addWorkout'];
   ds = ELEMENT_DATA;
   isOpen = false;
   isSubmitted: boolean = false;
   dataList: any[] = ['Arms', 'Leg', 'Abs', 'Back'];
-
+  
+  constructor(private titleService: TitleService,private router : Router) {
+    this.titleService.setTitle("Workout Plan");
+  }
   operation(name: string) {
     this.show = name;
   }
@@ -40,9 +43,6 @@ export class WorkoutplanComponent implements OnInit {
   }
   closeDiv() {
     this.isOpen = false;
-  }
-  constructor(private titleService: TitleService) {
-    this.titleService.setTitle("Workout Plan");
   }
 
   ngOnInit(): void {
@@ -55,6 +55,9 @@ export class WorkoutplanComponent implements OnInit {
 
   AddToHistory() {
     this.isSubmitted = true;
+  }
+  goBack(){
+    window.location.reload();
   }
 
 }

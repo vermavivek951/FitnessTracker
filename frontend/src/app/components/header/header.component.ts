@@ -29,4 +29,9 @@ export class HeaderComponent implements OnInit {
   goToLogin(){
     this.router.navigate(['login']);
   }
+
+// without user signin , later corrected with user signin only
+  showUserProfile(){
+    this.router.navigate(['profile']);
+  }
 }

@@ -82,3 +82,13 @@ input[type='submit']:hover {
     background: rgb(136, 227, 94);;
 }
 
+.btn{
+    color: blueviolet;
+    &:hover{
+      background-color: antiquewhite;
+    }
+    &:selection{
+      color: azure;
+    }
+  }
+

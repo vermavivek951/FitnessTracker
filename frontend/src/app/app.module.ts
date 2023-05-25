@@ -27,6 +27,7 @@ import { RecommendationsComponent } from './components/recommendations/recommend
 import { WorkouthistoryComponent } from './components/workouthistory/workouthistory.component';
 import { AddHistoryComponent } from './components/add-history/add-history.component';
 import { MatTableModule } from '@angular/material/table';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     GoalsettingComponent,
     RecommendationsComponent,
     WorkouthistoryComponent,
-    AddHistoryComponent
+    AddHistoryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

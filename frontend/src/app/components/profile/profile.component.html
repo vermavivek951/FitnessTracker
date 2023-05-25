@@ -1,0 +1,32 @@
+<mat-drawer-container class="body">
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+      <router-outlet></router-outlet>
+      <div class="container-fluid page">
+        <div class="d-flex page__box p-4 mt-2">Profile</div>
+        <div class="page__content shadow position-relative">
+          
+          
+          <div class="btn-box-top">
+            <button class="btn">Your Profile</button>
+            <button class="btn">Show All Users</button>
+            <button class="btn">Search Users</button>
+            <button class="btn">Show Users</button>
+          </div>
+          <hr>
+  
+  
+          <div class="page__content-data position-absolute text-center">
+            
+  
+          </div>
+        </div>
+      </div>
+  
+  
+  
+    </mat-drawer-content>
+  </mat-drawer-container>

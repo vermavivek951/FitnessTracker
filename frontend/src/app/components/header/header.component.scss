@@ -2,6 +2,7 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 100;
+
 }
 
 ul {
@@ -34,4 +35,8 @@ mat-toolbar {
   .mat-menu-content {
     width: 160px;
   }
+}
+.navbar-custom{
+  background-color: #C0CFC3;
+  min-width: 500px;
 }

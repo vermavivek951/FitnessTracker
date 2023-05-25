@@ -1,4 +1,4 @@
-<mat-drawer-container>
+<mat-drawer-container class="body">
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenav></app-sidenav>
   </mat-drawer>
@@ -6,19 +6,25 @@
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
 
-    <div class="page">
-      <div class="page__box p-3 mt-2">Workout Plan</div>
-      <div class="page__content shadow position-relative" style="min-width: 400px">
-        <div class="page__content shadow p-3 position-relative text-center" [ngSwitch]="show">
-
-          <!-- Workout Plan Content Goes Here -->
-          <div class="row" *ngSwitchCase="'btns'">
-            <button class="btn btn-primary p-3" (click)="operation('AddWorkout')">Add Workout</button>
-            <button class="btn btn-secondary p-3" (click)="operation('showWorkout')">show Workout</button>
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Workout Plan</div>
+      <div [ngSwitch]="show" class="page__content shadow position-relative"> 
+        <button class="align-center justify-content-center d-flex btn"
+          (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div *ngSwitchCase="'btns'" class="d-flex justify-content-center" >
+          <div>
+            <button class="btn" (click)="operation('AddWorkout')">Add Workout</button>
+            <button class="btn" (click)="operation('showWorkout')">show Workout</button>
           </div>
+        </div>
+        <hr>
+          <div class=" position-relative p-4" style="font-size: small; min-height: calc(100vh - 260px); ">
+       
           <div class="row" *ngSwitchCase="'AddWorkout'">
             <table mat-table [dataSource]="ds" [style.display]="isOpen?'none':'block'"
-              style="border-radius: 12px;background-color: rgb(220, 228, 186);" class="mat-elevation-z8">
+              style="border-radius: 6px; background-color: rgb(220, 228, 186);" class="mat-elevation-z8">
               <ng-container matColumnDef="workoutName">
                 <th mat-header-cell *matHeaderCellDef> Workout Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.workoutName}} </td>

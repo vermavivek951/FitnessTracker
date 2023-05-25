@@ -1,4 +1,4 @@
-<mat-drawer-container>
+<mat-drawer-container class="body">
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenav></app-sidenav>
   </mat-drawer>
@@ -8,7 +8,8 @@
     <div class="container-fluid page">
       <div class="d-flex page__box p-3 mt-2">Exercise Tracking</div>
       <div class="page__content shadow p-3 position-relative">
-        <div class="page__content-data position-absolute text-center">
+        <!-- <div class="page__content-data position-absolute text-center"> -->
+          <div class=" position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
           Exercise Tracking Content Goes Here
         </div>
       </div>

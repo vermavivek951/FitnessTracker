@@ -17,6 +17,14 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     private String username;
     private String password;
     private String email;
@@ -27,6 +35,14 @@ public class User {
 
     @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Workout> workouts;
+
+    public Set<Workout> getWorkouts() {
+        return workouts;
+    }
+
+    public void setWorkouts(Set<Workout> workouts) {
+        this.workouts = workouts;
+    }
 
     //constructors
     public User() {
