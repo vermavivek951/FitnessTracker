@@ -45,6 +45,7 @@
                                 id="emailInput" type="email" name="email" [(ngModel)]="user.email" required
                                 #emailInput="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
+                             
                         </div>
 
                         <!-- Password input -->

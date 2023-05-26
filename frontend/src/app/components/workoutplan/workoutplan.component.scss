@@ -1,18 +1,33 @@
 @import "../home/home.component.scss";
 
- #fitness-content {
-    border-radius: 12px;
-    background: #efefef;
+.page-container-data{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 4px 4px 5px rgba(0,0,0,0.25);
+    border-radius: 12px;
+}
+.table{
+    position: sticky;
+    margin-left: 20%;
+    margin-right:10% ;
+    padding: 0;
+    
+    background-color: rgb(220, 228, 186);
+    border-radius: 12px;
+}
+
+ #fitness-content {
+    flex-direction: column;
+    border-radius: 12px;
+    background: #efefef;
+    box-shadow: 4px 4px 5px 4px rgba(0,0,0,0.25);
     
 }
 #fitness-header {
     background: rgb(121, 121, 131);
     color: #fff;
-    padding: 10px 10px;
+    padding: 5px;
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
@@ -35,7 +50,7 @@
 }
 
 #fitness-footer {
-    background:  rgb(121, 121, 131);
+    background:  rgb(72, 106, 81);
     color: #fff;
     text-align: center;
     text-transform: uppercase;

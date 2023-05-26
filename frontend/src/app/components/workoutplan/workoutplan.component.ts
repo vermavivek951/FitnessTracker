@@ -3,15 +3,15 @@ import { Route, Router } from '@angular/router';
 import { TitleService } from 'app/services/title.service';
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { workoutName: 'helo', workoutType: 'Hydrogen', workoutVideo: 1.0079, addWorkout: 'H' },
-  { workoutName: 'helo', workoutType: 'Hydrogen', workoutVideo: 1.0079, addWorkout: 'H' },
-  { workoutName: 'helo', workoutType: 'Hydrogen', workoutVideo: 1.0079, addWorkout: 'H' },
+  { workoutName: 'Push-Up Challenge', exercise: ['Push-ups','Diamond' ,'push-ups', 'Wide-push-ups'], workoutVideo: 1.0079, addWorkout: 'H' },
+  { workoutName: 'Squat Power', exercise: ['Squats', 'Jump squats', 'Barbell squats'], workoutVideo: 1.0079, addWorkout: 'H' },
+  { workoutName: 'Cardio Blast', exercise: ['Jumping jacks', 'High knees', 'Burpees'], workoutVideo: 1.0079, addWorkout: 'H' },
 
 
 ];
 export interface PeriodicElement {
   workoutName: string;
-  workoutType: string;
+  exercise: any[];
   workoutVideo: number;
   addWorkout: string;
 }
@@ -24,7 +24,7 @@ export interface PeriodicElement {
 export class WorkoutplanComponent implements OnInit {
   show: string = "btns";
   panelOpenState = false;
-  displayedColumns: string[] = ['workoutName', 'workoutType', 'workoutVideo', 'addWorkout'];
+  displayedColumns: string[] = ['workoutName', 'exercise', 'workoutVideo', 'addWorkout'];
   ds = ELEMENT_DATA;
   isOpen = false;
   isSubmitted: boolean = false;

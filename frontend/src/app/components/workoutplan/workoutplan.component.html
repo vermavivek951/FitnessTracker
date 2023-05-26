@@ -8,32 +8,33 @@
 
     <div class="container-fluid page">
       <div class="d-flex page__box p-3 mt-2">Workout Plan</div>
-      <div [ngSwitch]="show" class="page__content shadow position-relative"> 
-        <button class="align-center justify-content-center d-flex btn"
-          (click)="goBack()">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-        <div *ngSwitchCase="'btns'" class="d-flex justify-content-center" >
-          <div>
+      <div [ngSwitch]="show" class="page__content shadow position-relative">
+
+        <div id="page_header" class="text-center">
+          <button style="float:left;" class="btn" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <div *ngSwitchCase="'btns'">
             <button class="btn" (click)="operation('AddWorkout')">Add Workout</button>
             <button class="btn" (click)="operation('showWorkout')">show Workout</button>
           </div>
         </div>
-        <hr>
-          <div class=" position-relative p-4" style="font-size: small; min-height: calc(100vh - 260px); ">
-       
-          <div class="row" *ngSwitchCase="'AddWorkout'">
-            <table mat-table [dataSource]="ds" [style.display]="isOpen?'none':'block'"
-              style="border-radius: 6px; background-color: rgb(220, 228, 186);" class="mat-elevation-z8">
+        <hr width="100%">
+        <div class="page_container"
+          style="font-size: small; min-height: calc(100vh - 200px); ">
+
+          <div class="page-container-data" *ngSwitchCase="'AddWorkout'">
+
+            <table  mat-table [dataSource]="ds" [style.display]="isOpen?'none':'block'" class="table">
               <ng-container matColumnDef="workoutName">
                 <th mat-header-cell *matHeaderCellDef> Workout Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.workoutName}} </td>
               </ng-container>
 
               <!-- Name Column -->
-              <ng-container matColumnDef="workoutType">
-                <th mat-header-cell *matHeaderCellDef> Workout Type</th>
-                <td mat-cell *matCellDef="let element"> {{element.workoutType}} </td>
+              <ng-container matColumnDef="exercise">
+                <th mat-header-cell *matHeaderCellDef> Exercises</th>
+                <td mat-cell *matCellDef="let element"> {{element.exercise}} </td>
               </ng-container>
 
               <!-- Weight Column -->
@@ -58,41 +59,42 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 
-            <div id="contact-fitness" [style.display]="isOpen?'flex' : 'none'" class="fitness-container">
-              <div id="fitness-content" class="container-fluid row">
-                <div id="fitness-header">
-                  <div id="span" (click)="closeDiv()" class="close-fitness">&times;</div>
-                  <h2>Fitness Tracker App</h2>
-                </div>
-                <div id="fitness-body">
-                  <h3>Add a new Workout</h3>
-                  <form>
-                    <div class="form-group">
-                      <label for="exercise type">Exercise Type</label>
-                      <select>
-                        <option *ngFor="let item of dataList" [value]="item">{{ item }}</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="sets">Sets</label>
-                      <input type="number" placeholder="Enter no of sets">
-                    </div>
-                    <div class="form-group">
-                      <label for="duration">Duration (hrs/min)</label>
-                      <input type="time" placeholder="Enter the Duration of workout">
-                    </div>
-                    <div class="form-group">
-                      <label for="date">Date</label>
-                      <input type="date" placeholder="Enter the Date of workout">
-                    </div>
-                    <input (click)="AddToHistory()" type="submit" value="SUBMIT">
-
-                  </form>
-                </div>
-                <div [style.display]="isSubmitted?'block':'none'" id="fitness-footer">
-                  <h3>Thank You!</h3>
-                </div>
+            <!-- <div id="contact-fitness" > -->
+            <div id="fitness-content" [style.display]="isOpen?'flex' : 'none'">
+              <div id="fitness-header">
+                <div id="span" (click)="closeDiv()" class="close-fitness">&times;</div>
+                <h2>Add Workout</h2>
               </div>
+              <div id="fitness-body">
+                <form>
+                  <div class="form-group">
+                    <label for="exercise type">Exercise Type</label>
+                    <select>
+                      <option *ngFor="let item of dataList" [value]="item">{{ item }}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="sets">Sets</label>
+                    <input type="number" placeholder="Enter no of sets">
+                  </div>
+                  <div class="form-group">
+                    <label for="duration">Duration (hrs/min)</label>
+                    <input type="time" placeholder="Enter the Duration of workout">
+                  </div>
+                  <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" placeholder="Enter the Date of workout">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+                    <input (click)="AddToHistory()" type="submit" value="SUBMIT">
+                  </div>
+
+                </form>
+              </div>
+              <div [style.display]="isSubmitted?'grid':'none'" id="fitness-footer">
+                <h3>Added Successfully!</h3>
+              </div>
+              <!-- </div> -->
             </div>
 
 

@@ -6,11 +6,11 @@
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <router-outlet></router-outlet>
     <div class="container-fluid page" >
-      <div class="d-flex page__box p-3" style="min-width: 500px">Home</div>
+      <div class="d-flex page__box p-3">Home</div>
       <div class="page__content shadow position-relative">
         <h1 class="text-center fw-bold">Transform Your Life with the Power of Fitness Workouts</h1>
-        <hr>
-        <div class=" position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 271px)">
+        <mat-divider style="border-top-width: 2px; border-color:rgb(255, 255, 255);"></mat-divider>
+        <div class="page_container position-relative p-4">
           <h2 class="fw-bold">Fitness is Journey</h2>
           Regular exercise improves physical and mental health, boosts
           mood and energy, and helps you live a better life.
@@ -18,8 +18,8 @@
           memory.
           Doing just 15 minutes of exercise per day can add three years to your life.
           <br>
-          <div class="d-flex align-items-center justify-content-center row" style="height:250px; width:100%">
-            <img style="width:250px"
+          <div class="d-flex align-items-center justify-content-center row mt-2" >
+            <img style="width:280px"
               src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcStaD8XU1M6PRKskYzBzdo4codurTodnzEdaijNRm0qabvx1SBu"
               alt="fitness quote">
 
@@ -36,8 +36,8 @@
           So take that first step today and start your journey towards a better you!
           <br>
           <div class="row">
-            <a class="btn" href="workout/list">LIST OF WORKOUTS</a>
-            <a class="btn" routerLink="history">WORKOUT HISTORY</a>
+            <a class="mt-2 btn border border-primary" href="workout/list">LIST OF WORKOUTS</a>
+            <a class="btn  btn border border-primary mt-2" routerLink="history">WORKOUT HISTORY</a>
           </div>
 
         </div>

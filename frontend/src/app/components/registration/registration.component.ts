@@ -16,18 +16,9 @@ export class RegistrationComponent {
     this.title.setTitle("Register");
   }
   user: any = {};
-  id: string = "1";
-  username!: string;
-  email: string = "";
-  password: string = "";
-  height: number = 0;
-  weight: number = 0;
-  gender!: string;
-  age!: number;
-  data: any = { name: this.username, email: this.email, password: this.password, height: this.height, weight: this.weight, age: this.age, gender: this.gender };
+ 
 
-
-  // to set the title and navigate to Login Page
+  // to navigate to Login Page
   goToLogin() {
     this.router.navigate(['login'])
     
