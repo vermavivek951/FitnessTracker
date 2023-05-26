@@ -1,5 +1,5 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component} from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TitleService } from '../../services/title.service';
 import { HttpClient } from '@angular/common/http';
@@ -10,16 +10,21 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  // @Output() currUser = new EventEmitter<string>();
   constructor(private _http: HttpClient, private _route: Router, private title: TitleService, private userService: UserService) {
     this.title.setTitle("Login");
-   }
+  }
   email!: string;
   password!: string;
   loginError!: string;
   
   loggedIn:boolean=false;
   user = { email: this.email, password: this.password };
+  
+  myForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required])
+  });
+  
   getUserName(){
     this._http.get("http://localhost:8080/users").subscribe(response => {
     const allUsers = Object.values(response) as any[];  
@@ -63,9 +68,6 @@ export class LoginComponent {
   }
 
   
-  myForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-  });
 
   sendToRegisterPage() {
     this._route.navigate(['']);

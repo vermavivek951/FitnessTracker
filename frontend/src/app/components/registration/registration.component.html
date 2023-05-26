@@ -1,97 +1,93 @@
-<div class="d-flex flex-direction-column">
-
-    <nav class="display-5 fixed-top"
-        style="text-align: center; font-weight:bolder;color: aliceblue; padding:5px;">
-        Welcome to the Fitness Tracker App
-        <hr style="color: rgb(255, 255, 255); ">
+<div class="position-relative background-radial-gradient">
+    <nav class="display-5 text-center fw-bold text-white pt-2 ">
+        Fitness Tracker Portal
     </nav>
-</div>
+    <hr>
 
+    <div class="custom-container">
+        <!-- tagline -->
+        <div class="col-md-6 text-center">
+            <h1 class="ls-tight  mb-5 display-5 fw-bold text-white">
+                Fitness Tracker
+                <p style="color: rgb(140, 177, 243)">Live the healthy Life</p>
+            </h1>
+            <p class="opacity-50" style="color: rgb(186, 208, 248)">
+                Transform Your Health and Fitness with Our Comprehensive Fitness<br> Tracker: Reach Your Goals and Stay
+                Motivated!
+            </p>
+        </div>
+        <!-- registration form -->
+        <div class="col-md-6">
+            <div class="align-items-center mt-4 card mx-2">
+                <div name="title">
+                    <label class="h1">Register</label>
+                </div>
+                <form class="card-body row px-4" [formGroup]="myform" (submit)="onSubmit()">
+                    <div class="form-outline">
+                        <label class="hint">Enter name</label>
+                        <input autocomplete="username" name="username" [(ngModel)]="user.username"
+                            placeholder="Enter your name" class="form-control mb-2"
+                            formControlName="username" [ngClass]="{'is-invalid': myform.get('username')?.invalid && myform.get('username')?.touched}" required />
+                    </div>
+                    <!-- email -->
 
-<div class="background-radial-gradient custom-container pt-6 " style="height:100vh">
+                    <div class="form-outline">
+                        <label class="hint">Enter email</label>
+                        <input autocomplete="email" name="email" [(ngModel)]="user.email"
+                            placeholder="Enter your email address" class="form-control mb-2"
+                            formControlName="email" [ngClass]="{'is-invalid': myform.get('email')?.invalid && myform.get('email')?.touched }"
+                            type="email" required />
+                    </div>
 
+                    <!-- Password input -->
+                    <div class="form-outline">
+                        <label class="hint">Enter password</label>
+                        <input name="password" [(ngModel)]="user.password" autocomplete="current-password"
+                            placeholder="Enter your password" type="password"
+                            formControlName="password" [ngClass]="{'is-invalid': myform.get('password')?.invalid && myform.get('password')?.touched}" class="form-control mb-2" required />
+                    </div>
 
-    <!-- tagline -->
-    <div class="col-md-6">
-        <h1 class="text-center my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            Fitness Tracker <br />
-            <span style="color: hsl(218, 81%, 75%)">Live the healthy Life</span>
-        </h1>
-        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-            Transform Your Health and Fitness with Our Comprehensive Fitness Tracker: Reach Your Goals and Stay
-            Motivated!
-        </p>
-    </div>
-    <!-- registration form -->
-    <div class="col-md-6">
-
-        <div class="align-items-center mt-4 card">
-            <div class="d-flex justify-content-center align-item-center mt-4 mb-4 w-25 ">
-                <span class="h1">Register</span>
-            </div>
-            <div class="card-body py-3">
-
-                <form class="px-4" #myForm="ngForm" (submit)="onSubmit()">
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                    <div class="row">
-                        <div class="form-outline">
-                            <input name="username" [(ngModel)]="user.username" placeholder="Enter your name"
-                                class="form-control mb-4" required />
-                        </div>
-                        <!-- email -->
-
-                        <div class="form-outline">
-                            <input autocomplete="email" placeholder="Enter your email address" class="form-control mb-4"
-                                id="emailInput" type="email" name="email" [(ngModel)]="user.email" required
-                                #emailInput="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
-                             
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="form-outline">
-                            <input name="password" [(ngModel)]="user.password" autocomplete="current-password"
-                                placeholder="Enter your password" type="password" id="form2Example4"
-                                class="form-control mb-4" required />
-                        </div>
-
-                        <!-- height -->
-                        <div class="put-in-row">
-                            <div class="col">
-                                <div class="form-outline">
-                                    <input name="height" [(ngModel)]="user.height" placeholder="Enter your height in cm"
-                                        type="number" id="form3Example3" class="form-control mb-4" required />
-                                </div>
-                            </div>
-                            <!-- weight -->
-                            <div class="col">
-                                <div class="form-outline">
-                                    <input name="weight" [(ngModel)]="user.weight" placeholder="Enter your weight in kg"
-                                        type="number" id="form3Example2" class="form-control mb-4" required />
-                                </div>
-                            </div>
-                        </div>
-                        <!-- age -->
-                        <div class="form-outline">
+                    <!-- height n weight -->
+                    <div class="put-in-row">
+                        <div class="col">
+                            <label class="hint">Enter height</label>
+                            <!-- height -->
                             <div class="form-outline">
-                                <input name="age" [(ngModel)]="user.age" placeholder="Enter your age" type="number"
-                                    id="form3Example4" class="form-control mb-4" required />
+                                <input name="height" [(ngModel)]="user.height" placeholder="Enter your height in cm"
+                                   formControlName="height" [ngClass]="{'is-invalid': myform.get('height')?.invalid && myform.get('height')?.touched}" type="number" class="form-control mb-2" required />
                             </div>
                         </div>
-                        <!-- gender -->
-                        <div class="">
-                            <select class="form-select" id="selectGender" name="gender"
-                                (change)="changeSelection($event.target)">
-                                <option selected disabled>Select your gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
+                        <!-- weight -->
+                        <div class="col">
+                            <label class="hint">Enter weight</label>
+                            <div class="form-outline">
+                                <input name="weight" [(ngModel)]="user.weight" placeholder="Enter your weight in kg"
+                                formControlName="weight" [ngClass]="{'is-invalid': myform.get('weight')?.invalid && myform.get('weight')?.touched}" type="number" class="form-control mb-2" required />
+                            </div>
                         </div>
+                    </div>
+                    <!-- age -->
+                    <div class="form-outline">
+                        <label class="hint">Enter age</label>
+                        <div class="form-outline">
+                            <input name="age" [(ngModel)]="user.age" placeholder="Enter your age" type="number"
+                            formControlName="age" [ngClass]="{'is-invalid': myform.get('age')?.invalid && myform.get('age')?.touched}" class="form-control mb-2" required />
+                        </div>
+                    </div>
+                    <!-- gender -->
+                    <div class="">
+                        <label class="hint">Select gender</label>
+                        <select formControlName="gender" [ngClass]="{'is-invalid': myform.get('gender')?.invalid && myform.get('gender')?.touched}" class="form-select" name="gender" 
+                            (change)="changeSelection($event.target)" required>
+                            <option selected disabled>Select your gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
 
                     <!-- Submit button -->
-                    <div class="row-btns">
+                    <div class="row-btns mt-4">
                         <button type="submit" class="btn btn-danger">
                             Sign up
                         </button>
@@ -99,9 +95,11 @@
                         <label class="text-secondary">or</label>
                         <a (click)="goToLogin()" type="submit" class="text-decoration-none text-primary">Login</a>
                     </div>
+                    <div *ngIf="!isFormCorrect" class="text-center mt-2 alert alert-danger">
+                        Something went wrong!!
+                    </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>

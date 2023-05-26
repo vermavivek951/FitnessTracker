@@ -1,7 +1,7 @@
 <header>
   <nav class="display-5 fixed-top fw-bold  text-center "
     style="justify-content: center; font-weight:bolder;color: aliceblue; padding:15px;">
-    Welcome to the Fitness Tracker App
+   Fitness Tracker Portal
     <hr>
   </nav>
 </header>
@@ -34,16 +34,16 @@
           <div class="row">
             <!-- emial -->
             <div class="form-outline">
-              <input placeholder="Enter your email" class="form-control mb-4 p-2 " id="emailInput" type="email"
-                name="email" [(ngModel)]="user.email" required #emailInput="ngModel"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}">
+              <input placeholder="Enter your email" class="form-control mb-4 p-2 " type="email"
+              formControlName="email" [ngClass]="{'is-invalid': myForm.get('email')?.invalid && myForm.get('email')?.touched}"
+                name="email" [(ngModel)]="user.email" required>              
             </div>
 
             <!-- Password input -->
             <div class="form-outline">
               <input name="password" [(ngModel)]="user.password" placeholder="Enter your password" type="password"
-                id="form3Example4" class="form-control p-2 mb-4" required />
+              formControlName="password" [ngClass]="{'is-invalid': myForm.get('password')?.invalid && myForm.get('password')?.touched}"
+              class="form-control p-2 mb-4" required />
             </div>
           </div>
 
