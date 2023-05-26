@@ -35,14 +35,13 @@
             <!-- emial -->
             <div class="form-outline">
               <input placeholder="Enter your email" class="form-control mb-4 p-2 " type="email"
-              formControlName="email" [ngClass]="{'is-invalid': myForm.get('email')?.invalid && myForm.get('email')?.touched}"
+              
                 name="email" [(ngModel)]="user.email" required>              
             </div>
 
             <!-- Password input -->
             <div class="form-outline">
               <input name="password" [(ngModel)]="user.password" placeholder="Enter your password" type="password"
-              formControlName="password" [ngClass]="{'is-invalid': myForm.get('password')?.invalid && myForm.get('password')?.touched}"
               class="form-control p-2 mb-4" required />
             </div>
           </div>
