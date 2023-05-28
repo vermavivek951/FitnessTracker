@@ -54,9 +54,6 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-    BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     // * MATERIAL IMPORTS
     MatSidenavModule,

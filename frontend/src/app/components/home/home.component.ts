@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { TitleService } from 'app/services/title.service';
 
 @Component({

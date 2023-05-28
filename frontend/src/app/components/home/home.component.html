@@ -1,24 +1,31 @@
 <mat-drawer-container>
-  <mat-drawer  mode="side" [opened]="sideBarOpen">
+  <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenav></app-sidenav>
   </mat-drawer>
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
-    <router-outlet></router-outlet>
-    <div class="container-fluid page" >
+    <div class="container-fluid page">
       <div class="d-flex page__box p-3">Home</div>
       <div class="page__content shadow position-relative">
         <h1 class="text-center fw-bold">Transform Your Life with the Power of Fitness Workouts</h1>
         <mat-divider style="border-top-width: 2px; border-color:rgb(255, 255, 255);"></mat-divider>
         <div class="page_container position-relative p-4">
           <h2 class="fw-bold">Fitness is Journey</h2>
+
+          <div class="d-flex align-items-center justify-content-center mt-2">
+            <img height="400px" width="300px" class="workout"
+              src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+              alt="workout image"><br>
+
+          </div>
+
           Regular exercise improves physical and mental health, boosts
           mood and energy, and helps you live a better life.
           A study found that just 10 minutes of exercise can boost brainpower, improving cognitive function and
           memory.
           Doing just 15 minutes of exercise per day can add three years to your life.
           <br>
-          <div class="d-flex align-items-center justify-content-center row mt-2" >
+          <div class="d-flex align-items-center justify-content-center row mt-2">
             <img style="width:280px"
               src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcStaD8XU1M6PRKskYzBzdo4codurTodnzEdaijNRm0qabvx1SBu"
               alt="fitness quote">
@@ -37,7 +44,7 @@
           <br>
           <div class="row">
             <a class="mt-2 btn border border-primary" href="workout/list">LIST OF WORKOUTS</a>
-            <a class="btn  btn border border-primary mt-2" routerLink="history">WORKOUT HISTORY</a>
+            <a class="btn  btn border border-primary mt-2" routerLink="/history">WORKOUT HISTORY</a>
           </div>
 
         </div>

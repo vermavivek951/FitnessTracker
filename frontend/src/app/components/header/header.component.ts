@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { TitleService } from 'app/services/title.service';
 import { UserService } from 'app/services/user.service';
 @Component({
   selector: 'app-header',
@@ -9,7 +7,8 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
+  @Output() 
+  toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
   userName!:string;
   constructor(private router: Router, private userService:UserService) {
@@ -17,7 +16,7 @@ export class HeaderComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this.userService.getUserNameObservable().subscribe((username: string) => {
+    this.userService.userNamebSubject.subscribe((username: string) => {
       this.userName = username;
     });
   }
