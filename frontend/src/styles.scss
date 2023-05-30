@@ -45,35 +45,11 @@
   justify-content: center;
 }
 
-.background-radial-gradient {
-  height: 100vh;
-  width: 100vw;
-  background-image: radial-gradient(circle at 0% 0%,
-      hsl(219, 41%, 29%) 15%,
-      hsl(224, 31%, 21%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%),
-      radial-gradient(circle at 100% 100%,
-      hsl(218, 40%, 25%) 15%,
-      hsl(223, 36%, 23%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%);
-}
 
-#radius-shape-1 {
-  height: 220px;
-  width: 220px;
-  top: -60px;
-  left: -130px;
-  background: radial-gradient(#44006b, #a72fed);
-  overflow: hidden;
-}
-
-
-html,
 body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #1C2B44;
 }
 

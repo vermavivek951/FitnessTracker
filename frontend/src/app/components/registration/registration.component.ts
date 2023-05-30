@@ -13,38 +13,41 @@ import { FormValidationService } from 'app/services/form-validation.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
-  constructor(private formValiadtionService: FormValidationService,private userService: UserService, private router: Router, private title: TitleService, private http: HttpClient) {
+  user: any = {};
+  isFormCorrect: boolean = true;
+  myform: FormGroup = this.formValiadtionService.myform;
+
+  constructor(private formValiadtionService: FormValidationService, private userService: UserService, private router: Router, private title: TitleService, private http: HttpClient) {
     console.log(this.user);
     this.title.setTitle("Register");
   }
-  user: any = {};
-  isFormCorrect:boolean = true;
-  myform: FormGroup = this.formValiadtionService.myform;
- ngOnInit(){
  
- }
-  // to navigate to Login Page
-  goToLogin() {
-    this.router.navigate(['login'])
-    
-  }
 
   // to send data to backend
   onSubmit() {
-    console.log(this.myform);
-    if(this.myform.valid){
+    this.user.username = this.myform.value.username;
+    this.user.email = this.myform.value.email;
+    this.user.password = this.myform.value.password;
+    this.user.weight = this.myform.value.weight;
+    this.user.height = this.myform.value.height;
+    this.user.age = this.myform.value.age;
+    this.user.gender = this.myform.value.gender;
+    console.log(this.user);
+    if (this.myform.valid) {
       this.http.post('http://localhost:8080/user/register', this.user).subscribe(response => {
         console.log(response);
-  
+        //user already present in the database should be implemented here 
       });
+      //check for backend status before routing
       this.router.navigate(['login']);
-    }else{
-      this.isFormCorrect = false;
     }
   }
 
-  changeSelection($target: any) {
-    this.user.gender = $target.value;
+
+  // to navigate to Login Page
+  goToLogin() {
+    this.router.navigate(['login'])
+
   }
 
 

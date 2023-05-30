@@ -11,28 +11,19 @@ import { ExersicetrackingComponent } from './components/exersicetracking/exersic
 import { GoalsettingComponent } from './components/goalsetting/goalsetting.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { WorkouthistoryComponent } from './components/workouthistory/workouthistory.component';
-import { AddHistoryComponent } from './components/add-history/add-history.component';
-import { WorkoutMainComponent } from './components/workout-main/workout-main.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
-  {
-    path: '', component: RegistrationComponent
-  },
-  {
-    path: 'login', component: LoginComponent
-  },
-  {
-    path: 'home', component: HomeComponent
-  },
+  { path: '', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'workout', component: WorkoutplanComponent },
   { path: 'exertracking', component: ExersicetrackingComponent },
   { path: 'goalsetting', component: GoalsettingComponent },
   { path: 'recommendations', component: RecommendationsComponent },
-  { path: 'history', component:WorkouthistoryComponent},
-  {path: 'testPage', component:WorkoutMainComponent},
-  {path: 'profile', component:ProfileComponent},
+  { path: 'history', component: WorkouthistoryComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: ErrorPageComponent },
 ];
 

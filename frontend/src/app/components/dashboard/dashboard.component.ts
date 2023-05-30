@@ -12,6 +12,13 @@ export class DashboardComponent implements OnInit {
     this.titleService.setTitle("Dashboard");
   }
 
+  
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
+
   ngOnInit(): void {
     
   }

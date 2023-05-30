@@ -5,6 +5,7 @@ import { TitleService } from '../../services/title.service';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'app/services/user.service';
 import { FormValidationService } from 'app/services/form-validation.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,18 +16,19 @@ export class LoginComponent {
     this.title.setTitle("Login");
   }
 
-  email!: string;
-  password!: string;
   loginError!: string;
   loggedIn:boolean=false;
   myform: FormGroup = this.formValidationService.myform;
-  user = { email: this.email, password: this.password };
+  user ={email:'', password:''};
   
   OnLoginSubmit() {
-    this._http.post("http://localhost:8080/user/login", this.user).subscribe(
-      (response: any) => {
+    this.user.email = this.myform.value.email;
+    this.user.password = this.myform.value.password;
+
+    this._http.post("http://localhost:8080/user/login", this.user).subscribe((response:any) => { 
         if (response.message === "Login Successful") {
           this.loggedIn = true;
+          //use id 
           this.getUserName();
           this._route.navigate(['home']); //user login sucessfull
         }
@@ -37,8 +39,9 @@ export class LoginComponent {
       });
   }
   
-
+//check user based on their id
   getUserName(){
+  
     this._http.get("http://localhost:8080/users").subscribe(response => {
     const allUsers = Object.values(response) as any[];  
     for(const loginUser of allUsers){

@@ -33,9 +33,9 @@ export class WorkoutplanComponent implements OnInit {
   constructor(private titleService: TitleService,private router : Router) {
     this.titleService.setTitle("Workout Plan");
   }
-  operation(name: string) {
-    this.show = name;
-  }
+  // operation(name: string) {
+  //   this.show = name;
+  // }
 
 
   showDiv() {

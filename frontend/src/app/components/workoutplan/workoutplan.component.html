@@ -15,15 +15,14 @@
             <mat-icon>arrow_back</mat-icon>
           </button>
           <div *ngSwitchCase="'btns'">
-            <button class="btn" (click)="operation('AddWorkout')">Add Workout</button>
-            <button class="btn" (click)="operation('showWorkout')">show Workout</button>
+            <button class="btn" (click)="showDiv()">Create Workout</button>
           </div>
         </div>
         <hr width="100%">
         <div class="page_container"
           style="font-size: small; min-height: calc(100vh - 200px); ">
 
-          <div class="page-container-data" *ngSwitchCase="'AddWorkout'">
+          <div class="page-container-data" >
 
             <table  mat-table [dataSource]="ds" [style.display]="isOpen?'none':'block'" class="table">
               <ng-container matColumnDef="workoutName">

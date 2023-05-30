@@ -7,7 +7,6 @@
 </header>
 <!-- Section: Design Block -->
 <section class="align-items-center d-flex" style="flex-direction: row; height: 100vh;">
-  <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong" style="opacity:60%"></div>
 
   <div class="custom-container px-md-4 d-flex flex-wrap justify-content-center">
     <div class="col-md-6" style="z-index: 10">
@@ -24,7 +23,7 @@
 
       <div class="card align-items-center">
 
-        <div class="d-flex align-items-center justify-content-center mt-4 mb-4 w-25">
+        <div class="d-flex align-items-center justify-content-center mt-2 mb-2 w-25">
           <span class="h1">Login</span>
         </div>
         <form [formGroup]="myform" class="p-4  my-auto" (submit)="OnLoginSubmit()">
@@ -34,8 +33,7 @@
             <!-- emial -->
             <div class="form-group">
               <label for="email">Email</label>
-              <input id="email" name="email" class="form-control mb-4" type="email" formControlName="email"
-                [(ngModel)]="user.email"
+              <input id="email"  class="form-control mb-4" type="email" formControlName="email"
                 [class]="{'is-invalid': myform.get('email')?.invalid && myform.get('email')?.touched}" required>
             </div>
 
@@ -43,7 +41,7 @@
             <div class="form-outline">
               <label for="password">Password</label>
               <input id="password" class="form-control p-2 mb-4" placeholder="Enter your password" type="password"
-                name="password" [(ngModel)]="user.password" formControlName="password"
+                formControlName="password"
                 [ngClass]="{'is-invalid': myform.get('password')?.invalid && myform.get('password')?.touched}"
                 required />
 
