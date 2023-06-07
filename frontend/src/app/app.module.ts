@@ -10,10 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './components/dashboard/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SidenavComponent } from './components/dashboard/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';

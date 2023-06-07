@@ -17,4 +17,6 @@ export class HomeComponent {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
+  
+
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
 @Component({
@@ -16,10 +16,13 @@ export class HeaderComponent implements OnInit {
    }
 
    ngOnInit(): void {
-    this.userService.userNamebSubject.subscribe((username: string) => {
-      this.userName = username;
+    this.userService.userSubject.subscribe((user: any) => {
+      console.log(user);
+      this.userName = user.username;
     });
   }
+
+  
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();

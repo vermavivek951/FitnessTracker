@@ -5,14 +5,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  userName: string = "Anonymouse";
-  userNamebSubject = new BehaviorSubject(this.userName);
-
-  getUserName() {
-    return this.userName;
+  user:any={email:'',username:'Anonymouse', password:'', height:0, weight:0,age:0, gender:''};
+  userSubject = new BehaviorSubject(this.user);
+  setUser(user:any){
+    this.userSubject.next(user);
   }
-  setUserName(user: string) {
-    this.userNamebSubject.next(user);
+  getUser(){
+    return this.userSubject;
   }
 
 }

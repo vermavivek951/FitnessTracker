@@ -14,6 +14,7 @@ import { WorkouthistoryComponent } from './components/workouthistory/workouthist
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
+  {path:'test', component:DashboardComponent},
   { path: '', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
