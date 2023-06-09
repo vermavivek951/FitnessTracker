@@ -4,8 +4,6 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutplanComponent } from './components/workoutplan/workoutplan.component';
 import { ExersicetrackingComponent } from './components/exersicetracking/exersicetracking.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
@@ -17,14 +15,12 @@ import { GoalSettingComponent } from './components/goal-setting/goal-setting.com
 import { TrackingComponent } from './components/tracking/tracking.component';
 
 const routes: Routes = [
-  {path:'test', component:DashboardComponent},
   { path: '', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path:'goalhome',component: GoalhomeComponent},
   {path:'tracking',component:ExersicetrackingComponent},
   {path:'goalhome/goalsets',component:GoalSettingComponent},
-  { path: 'dashboard', component: DashboardComponent },
   { path: 'workout', component: WorkoutplanComponent },
   { path: 'exertracking', component: ExersicetrackingComponent },
   {path:'goalhome/achievedgoals',component:AchievedGoalsComponent},

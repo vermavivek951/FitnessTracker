@@ -9,7 +9,7 @@ import { UserService } from 'app/services/user.service';
 })
 export class RecommendationsComponent implements OnInit {
   BMR:number = 0;
-  calorie:number=1800;
+  calorie:number=500;
   activity_factor:number = 1.2;
   age:number=0;
   openClicked = false;

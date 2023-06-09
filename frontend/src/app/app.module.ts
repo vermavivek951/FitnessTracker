@@ -11,10 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { HeaderComponent } from './components/dashboard/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavComponent } from './components/dashboard/sidenav/sidenav.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -25,7 +24,6 @@ import { WorkoutplanComponent } from './components/workoutplan/workoutplan.compo
 import { ExersicetrackingComponent } from './components/exersicetracking/exersicetracking.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { WorkouthistoryComponent } from './components/workouthistory/workouthistory.component';
-import { AddHistoryComponent } from './components/add-history/add-history.component';
 import { MatTableModule } from '@angular/material/table';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GoalhomeComponent } from './components/goalhome/goalhome.component';
@@ -36,7 +34,6 @@ import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
@@ -47,7 +44,6 @@ import { DatePipe } from '@angular/common';
     ExersicetrackingComponent,
     RecommendationsComponent,
     WorkouthistoryComponent,
-    AddHistoryComponent,
     ProfileComponent,
     GoalhomeComponent,
     GoalSettingComponent,
