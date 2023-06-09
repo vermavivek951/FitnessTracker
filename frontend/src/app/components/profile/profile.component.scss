@@ -8,18 +8,19 @@
       margin: 0 -1rem;
       font-size: 36px;
     }
+
     &__content {
       min-height: calc(100vh - 178px);
       border-radius: 10px;
       margin-top: -2rem;
       background: white;
-      color: black;
-      font-size: 2rem;
-      &-data {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+      color: rgb(143, 130, 130);
+      font-size: 1rem;
+      // &-data {
+      //   top: 50%;
+      //   left: 50%;
+      //   transform: translate(-50%, -50%);
+      // }
     }
   }
   .btn{
@@ -41,4 +42,28 @@
 
 .body{
   min-width: 750px;
+}
+
+.card-img-top{
+  width:150px;
+}
+.card{
+  min-width: 400px;
+  max-width: 1000px;
+  // box-shadow: 6px 6px 8px rgb(206, 203, 203);
+  
+}
+
+.form-control-plaintext{
+  border: 1px solid whitesmoke;
+  border-radius: 20px;
+  padding:10px;
+  box-shadow: 6px 6px 8px lightgrey;
+}
+
+.oval-shape{
+  min-width: 150px;
+  min-height: 150px;
+  border-radius: 50%;
+  background-size:cover ;  
 }

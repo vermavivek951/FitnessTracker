@@ -1,37 +1,112 @@
 <mat-drawer-container class="body">
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-sidenav></app-sidenav>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
-      <div class="container-fluid page">
-        <div class="d-flex page__box p-4 mt-2">Profile</div>
-        <div class="page__content shadow position-relative">
-          
-          
-          <div class="btn-box-top">
-            <button class="btn">Your Profile</button>
-            <button class="btn">Show All Users</button>
-            <button class="btn">Search Users</button>
-            <button class="btn">Show Users</button>
-          </div>
-          <hr>
-  
-  
-          <div class=" position-absolute">
-            <b>Name:</b> {{name}}<br><br>            
-            <b>Email:</b>{{email}}<br><br>            
-            <b>Height:</b>{{height}}<br><br>
-            <b>Weight:</b>{{weight}}<br><br>
-            <b>Age:</b>{{age}}<br><br>          
-            <b>gender:</b>{{gender}}<br><br>
-            
-  
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-4 mt-2">Profile</div>
+      <div class="page__content shadow position-relative">
+
+
+        <div class="container d-flex align-items-center justify-content-center ">
+          <div class="row">
+            <div class="col">
+              <div class=" ">
+                <div class="d-flex align-items-center justify-content-center">
+                  <img src="./../../../assets/icon/user.png" class="card-img-top oval-shape mt-3" alt="...">
+                </div>
+                <div class="box">
+                  <form class="row w-100" action="">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <label class=" font-weight-normal">Name</label>
+                        <input type="text" readonly class="form-control-plaintext" value="{{name}}">
+                      </div>
+                      <div class="form-group">
+                        <label class=" font-weight-normal">Email</label>
+                        <input type="text" readonly class="form-control-plaintext" value="{{email}}">
+                      </div>
+
+                      <div class="row">
+                        <div class="form-group col-md-6 col-sm-12">
+                          <label class=" font-weight-normal">Height</label>
+                          <input type="text" readonly class="form-control-plaintext" value="{{height}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label class=" font-weight-normal">Weight</label>
+                          <input type="text" readonly class="form-control-plaintext" value="{{weight}}">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-md-6">
+                          <label class=" font-weight-normal">Age</label>
+                          <input type="text" readonly class="form-control-plaintext" value="{{age}}">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label class=" font-weight-normal">Gender</label>
+                          <input type="text" readonly class="form-control-plaintext" value="{{gender}}">
+                        </div>
+                      </div>
+                      <!-- <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                          data-target="#exampleModal">Edit</button>
+                      </div> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-  
-  
-  
-    </mat-drawer-content>
-  </mat-drawer-container>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="">Name</label>
+                  <input type="text" class="form-control" value="{{name}}" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label>Height</label>
+                    <input type="text" class="form-control" value="{{height}}">
+                  </div>
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label>Weight</label>
+                    <input type="text" class="form-control" value="{{weight}}">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label>Age</label>
+                    <input type="text" class="form-control" value="{{age}}">
+                  </div>
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label>Gender</label>
+                    <input type="text" class="form-control" value="{{gender}}">
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+
+
+
+  </mat-drawer-content>
+</mat-drawer-container>

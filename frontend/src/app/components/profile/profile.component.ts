@@ -14,6 +14,7 @@ export class ProfileComponent {
   age !:string;
   height!:string;
   gender!:string;
+  allowEdit = false;
   constructor(private titleService:TitleService, private userService:UserService){
     this.titleService.setTitle("Profile");
   }
@@ -34,6 +35,10 @@ export class ProfileComponent {
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
+  }
+
+  edit(){
+    this.allowEdit = !this.allowEdit;
   }
 
 }

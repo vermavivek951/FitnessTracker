@@ -4,16 +4,120 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
-    <router-outlet></router-outlet>
+
 
 
     <div class="container-fluid page">
       <div class="d-flex page__box p-3 mt-2">Nutritional Recommendations</div>
+
       <div class="page__content shadow p-3 position-realtive">
-        <div class="page_container position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-          Nutritional Recommendations Content Goes Here
+        <div class="page_container position-relative p-4"
+          style="display: flex; flex-direction: column ;font-size: small; width: 100%; min-height: calc(100vh - 200px)">
+          <div *ngIf="!openClicked">
+            <!-- total calorie of user: -->
+            According to Mifflin-St. Jeor equation<br>
+            <span> Your Calorie:<b [ngClass]="{'is-calorie': calorie!=0}">{{calorie}}</b></span>
+            <span>
+              and the <u>average calorie for {{age}} years old</u> should be<br>
+            </span>
+            <Table style="border: 1px solid black;">
+              <thead>
+                <tr>
+                  <td>Age Group</td>
+                  <td>Male Calorie Range</td>
+                  <td>Female Calorie Range</td>
+                </tr>
+              </thead>
+              <tbody *ngFor="let ageGroup of requiredCalorie.age_groups">
+                <tr *ngFor="let range of ageGroup.ranges"
+                  [ngClass]="{'is-Age': ((range.range.min_age <= age) && (range.range.max_age)>=age) }">
+                  <td>{{range.age}}</td>
+                  <td>{{range.male_calorie_range}}</td>
+                  <td>{{range.female_calorie_range}}</td>
+                </tr>
+              </tbody>
+            </Table>
+            <button (click)="openFoodRecommendation()" class="btn btn-primary text-white mt-4">Click to get
+              Recommendation based on this data</button><br>
+            <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show previous
+              Recommendations</button>
+          </div>
+
+          <!-- food data -->
+          <div *ngIf="openClicked">
+            <label>
+              Protien Foods
+              <Table>
+                <thead>
+                  <tr>
+                    <td>Food Name</td>
+                    <td>Serving Size</td>
+                    <td>Minimum Calorie</td>
+                    <td>Maximum Calorie</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let foods of proteinFoods">
+                    <td>{{foods.name}}</td>
+                    <td>{{foods.serving_size}}</td>
+                    <td>{{foods.calories_per_serving.min_cal}}</td>
+                    <td>{{foods.calories_per_serving.max_cal}}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </label>
+
+
+            <label>
+              carbohydrate Foods
+              <Table >
+                <thead>
+                  <tr>
+                    <td>Food Name</td>
+                    <td>Serving Size</td>
+                    <td>Minimum Calorie</td>
+                    <td>Maximum Calorie</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let foods of carbohydrateFoods">
+                    <td>{{foods.name}}</td>
+                    <td>{{foods.serving_size}}</td>
+                    <td>{{foods.calories_per_serving.min_cal}}</td>
+                    <td>{{foods.calories_per_serving.max_cal}}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </label>
+
+            <label>
+              fat Foods
+              <Table>
+                <thead>
+                  <tr>
+                    <td>Food Name</td>
+                    <td>Serving Size</td>
+                    <td>Minimum Calorie</td>
+                    <td>Maximum Calorie</td>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr  *ngFor="let foods of fatFoods">
+                    <td>{{foods.name}}</td>
+                    <td>{{foods.serving_size}}</td>
+                    <td>{{foods.calories_per_serving.min_cal}}</td>
+                    <td>{{foods.calories_per_serving.max_cal}}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </label>
+
+          </div>
         </div>
       </div>
+
+
+
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GoalSettingComponent } from './components/goal-setting/goal-setting.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -22,13 +23,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { WorkoutplanComponent } from './components/workoutplan/workoutplan.component';
 import { ExersicetrackingComponent } from './components/exersicetracking/exersicetracking.component';
-import { GoalsettingComponent } from './components/goalsetting/goalsetting.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { WorkouthistoryComponent } from './components/workouthistory/workouthistory.component';
 import { AddHistoryComponent } from './components/add-history/add-history.component';
 import { MatTableModule } from '@angular/material/table';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { GoalhomeComponent } from './components/goalhome/goalhome.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TrackingComponent } from './components/tracking/tracking.component'
+import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,17 +40,21 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RegistrationComponent,
     HomeComponent,
-    ErrorPageComponent,
     HeaderComponent,
     HomeComponent,
     SidenavComponent,
     WorkoutplanComponent,
     ExersicetrackingComponent,
-    GoalsettingComponent,
     RecommendationsComponent,
     WorkouthistoryComponent,
     AddHistoryComponent,
     ProfileComponent,
+    GoalhomeComponent,
+    GoalSettingComponent,
+    AchievedGoalsComponent,
+    TrackingComponent,
+    AchievedGoalsComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,9 +70,13 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    // GoalSettingModule,
+
+
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

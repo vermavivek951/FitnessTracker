@@ -1,0 +1,20 @@
+<h1>The values of gym will displayed here :</h1>
+<div *ngFor="let data of dataArray">
+    <p>You spent {{data.Swiminput}} minutes for swimming</p>
+    <p>You spent {{data.Cycleinput}} minutes for Cycling</p>
+    <p>You spent {{data.Yogainput}} minutes for doing Yoga</p>
+    <p>You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
+    <p>You spent {{data.Runinput}} minutes for Running</p>
+</div>
+<!-- <select (change)="displaychart()">
+    <option value="bar">Bar Graph</option>
+    <option value="pie">Pie Chart</option>
+    <option value="line">Line Graph</option>
+    <option value="donut">Donut Graph</option>
+</select> -->
+<button (click)="displaychart()">Track</button>
+<div>
+    <div style="height: 600px; width: 700px;">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>

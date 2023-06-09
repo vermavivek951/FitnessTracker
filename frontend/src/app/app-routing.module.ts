@@ -8,20 +8,27 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutplanComponent } from './components/workoutplan/workoutplan.component';
 import { ExersicetrackingComponent } from './components/exersicetracking/exersicetracking.component';
-import { GoalsettingComponent } from './components/goalsetting/goalsetting.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 import { WorkouthistoryComponent } from './components/workouthistory/workouthistory.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { GoalhomeComponent } from './components/goalhome/goalhome.component';
+import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
+import { GoalSettingComponent } from './components/goal-setting/goal-setting.component';
+import { TrackingComponent } from './components/tracking/tracking.component';
 
 const routes: Routes = [
   {path:'test', component:DashboardComponent},
   { path: '', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
+  { path:'goalhome',component: GoalhomeComponent},
+  {path:'tracking',component:TrackingComponent},
+  {path:'goalhome/goalsets',component:GoalSettingComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'workout', component: WorkoutplanComponent },
   { path: 'exertracking', component: ExersicetrackingComponent },
-  { path: 'goalsetting', component: GoalsettingComponent },
+  {path:'goalhome/achievedgoals',component:AchievedGoalsComponent},
+  {path:'goalhome/tracking',component:TrackingComponent},
   { path: 'recommendations', component: RecommendationsComponent },
   { path: 'history', component: WorkouthistoryComponent },
   { path: 'profile', component: ProfileComponent },

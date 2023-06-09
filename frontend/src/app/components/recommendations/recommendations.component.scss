@@ -1,1 +1,30 @@
 @import "../home/home.component.scss";
+
+thead {
+    color: blue;
+}
+
+td {
+    padding: 5px;
+}
+
+td {
+    border: 1px solid rgb(0, 0, 0);
+
+}
+
+.is-Age {
+    border: 2px solid rgb(255, 0, 0);
+    background-color: rgba(224, 233, 124, 0.452);
+}
+.is-calorie{
+    color:blue;
+}
+
+.btn:hover{
+    background-color: rgb(255, 255, 255) !important;
+    color: blue !important;
+}
+.btn:active {
+    background-color: rgba(181, 181, 206, 0.782) !important;
+}
