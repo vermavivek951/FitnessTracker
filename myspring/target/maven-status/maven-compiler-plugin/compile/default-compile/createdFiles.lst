@@ -1,0 +1,4 @@
+com\spr\myspring\repository\UserRepository.class
+com\spr\myspring\controller\UserController.class
+com\spr\myspring\MyspringApplication.class
+com\spr\myspring\model\User.class
