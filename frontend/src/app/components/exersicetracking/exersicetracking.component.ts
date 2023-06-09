@@ -32,22 +32,26 @@ export class ExersicetrackingComponent implements OnInit {
   displaychart(){
     for(var val of this.dataArray){
     this.myCha = new Chart("myChart", {
-        type: 'bar',
+        type: 'pie',
         data: {
             labels: ['Swimming', 'Cycling', 'Yoga', 'Exercise', 'Running'],
             datasets: [{
                 label: '# no. of minutes',
                 data: [val.Swiminput, val.Cycleinput, val.Yogainput, val.Exerciseinput, val.Runinput],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    '#ADD8E6',
+                    '#90EE90',
+                    '#FFB6C1',
+                    '#FFFFE0',
+                    '#E6E6FA'
                     
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    '#000080',
+                    '#006400',
+                    '#FF69B4',
+                    '#CCCC00',
+                    '#9370DB'
                     
                 ],
                 borderWidth: 1

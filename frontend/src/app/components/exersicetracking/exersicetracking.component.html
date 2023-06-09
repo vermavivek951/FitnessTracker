@@ -10,7 +10,8 @@
       <div class="page__content shadow p-3 position-relative">
         <!-- <div class="page__content-data position-absolute text-center"> -->
           <div class="page_container position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-            <h1>The values of gym will displayed here :</h1>
+            <div class="container">
+              <h1>You can Track The Workouts by Setting Your Goals</h1>
             <div *ngFor="let data of dataArray">
                 <p>You spent {{data.Swiminput}} minutes for swimming</p>
                 <p>You spent {{data.Cycleinput}} minutes for Cycling</p>
@@ -18,17 +19,13 @@
                 <p>You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
                 <p>You spent {{data.Runinput}} minutes for Running</p>
             </div>
-            <!-- <select (change)="displaychart()">
-                <option value="bar">Bar Graph</option>
-                <option value="pie">Pie Chart</option>
-                <option value="line">Line Graph</option>
-                <option value="donut">Donut Graph</option>
-            </select> -->
             <button (click)="displaychart()">Track</button>
+            <br>
             <div>
                 <div style="height: 600px; width: 700px;">
                     <canvas id="myChart"></canvas>
                 </div>
+            </div>
             </div>
 
         </div>
