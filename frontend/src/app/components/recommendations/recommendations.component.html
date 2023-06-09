@@ -13,14 +13,14 @@
       <div class="page__content shadow p-3 position-realtive">
         <div class="page_container position-relative p-4"
           style="display: flex; flex-direction: column ;font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-          <div *ngIf="!openClicked">
+          <div class="row" *ngIf="!openClicked">
             <!-- total calorie of user: -->
             According to Mifflin-St. Jeor equation<br>
             <span> Your Calorie:<b [ngClass]="{'is-calorie': calorie!=0}">{{calorie}}</b></span>
             <span>
               and the <u>average calorie for {{age}} years old</u> should be<br>
             </span>
-            <Table style="border: 1px solid black;">
+            <Table  style="border: 1px solid black;">
               <thead>
                 <tr>
                   <td>Age Group</td>
@@ -37,15 +37,14 @@
                 </tr>
               </tbody>
             </Table>
-            <button (click)="openFoodRecommendation()" class="btn btn-primary text-white mt-4">Click to get
-              Recommendation based on this data</button><br>
-            <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show previous
+            <button (click)="openFoodRecommendation()" class="btn btn-primary text-white mt-4">Get Recommendations</button><br>
+            <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show Previous
               Recommendations</button>
           </div>
 
           <!-- food data -->
           <div *ngIf="openClicked">
-            <label>
+            <label class="row">
               Protien Foods
               <Table>
                 <thead>
@@ -65,11 +64,11 @@
                   </tr>
                 </tbody>
               </Table>
-            </label>
+            </label><br>
 
 
-            <label>
-              carbohydrate Foods
+            <label class="row">
+              Carbohydrate Foods
               <Table >
                 <thead>
                   <tr>
@@ -88,10 +87,10 @@
                   </tr>
                 </tbody>
               </Table>
-            </label>
+            </label><br>
 
-            <label>
-              fat Foods
+            <label class="row">
+              Fat Foods
               <Table>
                 <thead>
                   <tr>
@@ -110,7 +109,7 @@
                   </tr>
                 </tbody>
               </Table>
-            </label>
+            </label><br>
 
           </div>
         </div>
