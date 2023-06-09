@@ -16,10 +16,10 @@
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .card {
-    width: 18rem;
+    width: 14rem;
     height: 29rem;
     padding: 15px;
     margin-top: 15px;
@@ -282,4 +282,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer {
+  width: 260px;
+}
+mat-drawer-container {
+  height: 100%;
+}
+
+mat-drawer {
+  background: #0f172a;
 }

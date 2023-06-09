@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardDataService } from 'app/services/card-data.service';
 import { DataService } from 'app/services/data.service';
@@ -11,7 +11,7 @@ import { IComp } from '../IComp';
   templateUrl: './goal-setting.component.html',
   styleUrls: ['./goal-setting.component.scss']
 })
-export class GoalSettingComponent {
+export class GoalSettingComponent implements OnInit {
 
   isOpen = false;
   dataList: string[] = ['Swim', 'Eat'];
@@ -88,5 +88,13 @@ export class GoalSettingComponent {
       this.dataservice.setDataArray(dataArray);
       console.log(dataArray);
     }
+    ngOnInit(): void {
+    }
+    sideBarOpen = true;
+  
+    sideBarToggler() {
+      this.sideBarOpen = !this.sideBarOpen;
+    }
+  
+  }
 
-}

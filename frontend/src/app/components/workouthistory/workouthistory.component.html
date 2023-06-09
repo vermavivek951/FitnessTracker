@@ -1,3 +1,5 @@
+workouthistory.comp.html
+
 <mat-drawer-container class="body">
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidenav></app-sidenav>
@@ -11,7 +13,6 @@
       <div class="page__content shadow p-3 position-relative">
         <div class="page_container p-4" style="font-size: medium; width: 100%; min-height: calc(100vh - 200px);">
 
-          <!-- Workout History Content Goes Here -->
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
             <ng-container matColumnDef="workoutName">
@@ -19,19 +20,17 @@
               <td mat-cell *matCellDef="let element"> {{element.workoutName}} </td>
             </ng-container>
 
-            <!-- Name Column -->
             <ng-container matColumnDef="workoutType">
               <th mat-header-cell *matHeaderCellDef> Workout Type</th>
               <td mat-cell *matCellDef="let element"> {{element.workoutType}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
             <ng-container matColumnDef="workoutDuration">
               <th mat-header-cell *matHeaderCellDef> Duration </th>
               <td mat-cell *matCellDef="let element"> {{element.workoutDuration}} </td>
             </ng-container>
 
-            <!-- Symbol Column -->
+
             <ng-container matColumnDef="date">
               <th mat-header-cell *matHeaderCellDef> Date </th>
               <td mat-cell *matCellDef="let element"> {{element.date}} </td>
