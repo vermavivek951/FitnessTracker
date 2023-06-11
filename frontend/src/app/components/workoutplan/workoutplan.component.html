@@ -22,7 +22,7 @@
         <hr width="100%"><br>
         <div class="container w-50" style="font-size: small; ">
           <table mat-table [dataSource]="ds" [style.display]="isOpen?'none':'block'"
-            class="table table-primary table-hover">
+            class="table table-primary d-table-row">
             <ng-container matColumnDef="workoutName">
               <th mat-header-cell *matHeaderCellDef> Workout Name </th>
               <td mat-cell *matCellDef="let element"> {{element.workoutName}} </td>
