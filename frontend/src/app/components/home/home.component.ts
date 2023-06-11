@@ -7,7 +7,7 @@ import { TitleService } from 'app/services/title.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private titleService:TitleService){
+  constructor(private titleService: TitleService) {
     this.titleService.setTitle("Home");
   }
 
@@ -17,6 +17,6 @@ export class HomeComponent {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  
+
 
 }

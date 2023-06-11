@@ -12,7 +12,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GoalhomeComponent } from './components/goalhome/goalhome.component';
 import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
 import { GoalSettingComponent } from './components/goal-setting/goal-setting.component';
-import { TrackingComponent } from './components/tracking/tracking.component';
 
 const routes: Routes = [
   { path: '', component: RegistrationComponent },

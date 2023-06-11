@@ -1,3 +1,7 @@
+@import '../home/home.component.scss';
+.page__content{
+  background-color: rgb(227, 224, 224);
+}
 .nav{
     background-color:darksalmon;
     align-items: center;
@@ -228,9 +232,9 @@ body {
   font-size: 24px;
 }
 
-.popup-content {
-  /* Add styling for the popup content */
-}
+// .popup-content {
+//   /* Add styling for the popup content */
+// }
 .popup-buttons {
   display: flex;
   justify-content: flex-start;

@@ -10,7 +10,6 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -28,9 +27,9 @@ import { MatTableModule } from '@angular/material/table';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GoalhomeComponent } from './components/goalhome/goalhome.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { TrackingComponent } from './components/tracking/tracking.component'
 import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
 import { DatePipe } from '@angular/common';
+import { CustomNutritionRecomendationComponent } from './components/recommendations/custom-nutrition-recomendation/custom-nutrition-recomendation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +47,9 @@ import { DatePipe } from '@angular/common';
     GoalhomeComponent,
     GoalSettingComponent,
     AchievedGoalsComponent,
-    TrackingComponent,
     AchievedGoalsComponent,
     ErrorPageComponent,
+    CustomNutritionRecomendationComponent,
   ],
   imports: [
     BrowserModule,

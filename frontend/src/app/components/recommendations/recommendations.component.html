@@ -4,31 +4,39 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
-
-
-
     <div class="container-fluid page">
       <div class="d-flex page__box p-3 mt-2">Nutritional Recommendations</div>
-
       <div class="page__content shadow p-3 position-realtive">
+        <div *ngIf="setCustomClicked" class="d-flex flex-row pb-2" style="justify-content: space-between;">
+
+          <div [ngClass]="{'is-valid': calorie > requiredCalories}" class="cal-bar float-end p-2">
+            Total Calorie: {{calorie}} / {{requiredCalories}}
+          </div>
+          <div>
+            <button (click)="saveCustomNutrition()" style="color: white;" class="btn btn-success">Add to List
+            </button>
+          </div>
+        </div>
+
+
+
         <div class="page_container position-relative p-4"
           style="display: flex; flex-direction: column ;font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-          <div class="row" *ngIf="!openClicked">
+          <div class="row" *ngIf="!openClicked && !setCustomClicked">
             <!-- total calorie of user: -->
-            According to Mifflin-St. Jeor equation<br>
-            <span> Your Calorie:<b [ngClass]="{'is-calorie': calorie!=0}">{{calorie}}</b></span>
-            <span>
+            <i>According to Mifflin-St. Jeor equation, Your Calorie:<b
+                [ngClass]="{'is-calorie': calorie!=0}">{{requiredCalories}}</b>
               and the <u>average calorie for {{age}} years old</u> should be<br>
-            </span>
-            <Table  style="border: 1px solid black;">
-              <thead>
+              <br></i>
+            <Table class="table table- table-secondary">
+              <thead class="table-primary">
                 <tr>
                   <td>Age Group</td>
                   <td>Male Calorie Range</td>
                   <td>Female Calorie Range</td>
                 </tr>
               </thead>
-              <tbody *ngFor="let ageGroup of requiredCalorie.age_groups">
+              <tbody *ngFor="let ageGroup of requiredCalorieRange.age_groups">
                 <tr *ngFor="let range of ageGroup.ranges"
                   [ngClass]="{'is-Age': ((range.range.min_age <= age) && (range.range.max_age)>=age) }">
                   <td>{{range.age}}</td>
@@ -37,16 +45,20 @@
                 </tr>
               </tbody>
             </Table>
-            <button (click)="openFoodRecommendation()" class="btn btn-primary text-white mt-4">Get Recommendations</button><br>
-            <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show Previous
-              Recommendations</button>
+            <button (click)="openFoodRecommendation()" class="btn btn-primary text-white mt-4">Get
+              Recommendations</button><br>
+            <button (click)="openCustomRecommendations()" class="btn btn-secondary text-white mt-4">Custom
+              Recommendation</button>
+            <!-- <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show Previous
+                Recommendations</button> -->
+
           </div>
 
           <!-- food data -->
           <div *ngIf="openClicked">
             <label class="row">
               Protien Foods
-              <Table>
+              <Table class="table table-primary table-bordered">
                 <thead>
                   <tr>
                     <td>Food Name</td>
@@ -55,8 +67,8 @@
                     <td>Maximum Calorie</td>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr  *ngFor="let foods of proteinFoods">
+                <tbody class="table-secondary">
+                  <tr *ngFor="let foods of proteinFoods">
                     <td>{{foods.name}}</td>
                     <td>{{foods.serving_size}}</td>
                     <td>{{foods.calories_per_serving.min_cal}}</td>
@@ -69,7 +81,7 @@
 
             <label class="row">
               Carbohydrate Foods
-              <Table >
+              <Table class="table table-primary">
                 <thead>
                   <tr>
                     <td>Food Name</td>
@@ -78,7 +90,7 @@
                     <td>Maximum Calorie</td>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-secondary">
                   <tr *ngFor="let foods of carbohydrateFoods">
                     <td>{{foods.name}}</td>
                     <td>{{foods.serving_size}}</td>
@@ -91,7 +103,7 @@
 
             <label class="row">
               Fat Foods
-              <Table>
+              <Table class="table table-primary">
                 <thead>
                   <tr>
                     <td>Food Name</td>
@@ -100,8 +112,8 @@
                     <td>Maximum Calorie</td>
                   </tr>
                 </thead>
-                <tbody >
-                  <tr  *ngFor="let foods of fatFoods">
+                <tbody class="table-secondary">
+                  <tr *ngFor="let foods of fatFoods">
                     <td>{{foods.name}}</td>
                     <td>{{foods.serving_size}}</td>
                     <td>{{foods.calories_per_serving.min_cal}}</td>
@@ -112,11 +124,16 @@
             </label><br>
 
           </div>
+          <div *ngIf="setCustomClicked">
+            <app-custom-nutrition-recomendation [calorie]="calorie" [isSaved]="saved"
+              (variableEvent)="receiveVariable($event)"></app-custom-nutrition-recomendation>
+          </div>
         </div>
       </div>
-
-
-
     </div>
+
+
+
+
   </mat-drawer-content>
 </mat-drawer-container>

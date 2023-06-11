@@ -3,17 +3,10 @@
 thead {
     font-weight: bold;
     font-style: normal;
-    background-color: #726767;
-    color: rgb(47, 51, 52);
 }
-
-td {
-    padding: 5px;
-}
-
-td {
-    border: 1px solid #4f4848;
-
+.is-valid{
+    border: 1px solid red;
+    background-color: rgb(248, 116, 116);
 }
 
 .is-Age {
@@ -24,6 +17,12 @@ td {
     color:blue;
 }
 
+
+.cal-bar {
+    
+   color: rgb(129, 78, 11) !important;
+}
+
 .btn:hover{
     background-color: rgb(255, 255, 255) !important;
     color: blue !important;
@@ -31,3 +30,4 @@ td {
 .btn:active {
     background-color: rgba(181, 181, 206, 0.782) !important;
 }
+

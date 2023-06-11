@@ -1,3 +1,4 @@
+@import '../home/home.component.scss';
 *,
 *:before,
 *:after{
@@ -10,9 +11,8 @@ body{
 
 }
 nav{
-    height: 100vh;
-    width: 70vw;
-    min-width: 600px;
+    height: 20vh;
+    min-width: 400px;
     display: flex;
     align-items: top;
     justify-content: space-around;
@@ -37,7 +37,7 @@ a:after{
     background-color:crimson;
     height: 3px;
     width: 0%;
-    top:5%;
+    top:20%;
     left:5%;
     bottom: -5px;
     transition: 0.3s;

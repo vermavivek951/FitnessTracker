@@ -8,12 +8,36 @@ import { UserService } from 'app/services/user.service';
   styleUrls: ['./recommendations.component.scss']
 })
 export class RecommendationsComponent implements OnInit {
+  moreCalorie: boolean = false;
+  
+  constructor(private titleService:TitleService, private userService:UserService) { 
+    this.titleService.setTitle("Recommendations");
+  }
+
+  receiveVariable(variable: number) {
+    this.calorie = variable;
+    if(this.calorie > this.requiredCalories){
+      alert("You are taking more calories");
+      this.moreCalorie = true;
+    }else{
+      this.moreCalorie= false;
+    }
+  }
+  
   BMR:number = 0;
-  calorie:number=500;
+  calorie:number=0;
   activity_factor:number = 1.2;
   age:number=0;
   openClicked = false;
-  requiredCalorie=
+  setCustomClicked = false;
+  requiredCalories:number= 500;
+  saved:boolean = false;
+  
+  saveCustomNutrition(){
+    this.saved = true;
+  }
+
+  requiredCalorieRange=
     {
     "age_groups": [
       {
@@ -84,7 +108,7 @@ export class RecommendationsComponent implements OnInit {
     // Arrays to store recommended foods for each category
     this.openClicked = !this.openClicked;
 // Calculate the total calories required
-const totalCalories = this.calorie; 
+const totalCalories = this.requiredCalories; 
 
 // Calculate the target amounts for each macronutrient
 let proteinCalories = totalCalories * 0.25;
@@ -155,7 +179,9 @@ console.log('Recommended Fat Foods:', this.fatFoods);
 
 
   }
-  openRecommendationHistory(){
+  openCustomRecommendations(){
+    this.setCustomClicked = true;
+
     //open stored database of previous recommendations
   }
   nutritions= {
@@ -204,10 +230,6 @@ console.log('Recommended Fat Foods:', this.fatFoods);
 
 
   
-  constructor(private titleService:TitleService, private userService:UserService) { 
-    this.titleService.setTitle("Recommendations");
-    
-  }
 
   ngOnInit(): void {
     this.userService.userSubject.subscribe((userData)=>{
@@ -229,7 +251,7 @@ console.log('Recommended Fat Foods:', this.fatFoods);
       else if(userData.workouts.length > 7 )
       this.activity_factor = 1.9;
       // calorie calculation
-      this.calorie = this.BMR*this.activity_factor;
+      this.requiredCalories = this.BMR*this.activity_factor;
 
     })
   

@@ -7,7 +7,5 @@ import { TitleService } from './services/title.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  title = 'admin-panel-layout';
   
 }

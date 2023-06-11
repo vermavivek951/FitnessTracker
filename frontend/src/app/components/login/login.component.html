@@ -34,7 +34,7 @@
             <div class="form-group">
               <label for="email">Email</label>
               <input id="email"  class="form-control mb-4" type="email" formControlName="email"
-                [class]="{'is-invalid': myform.get('email')?.invalid && myform.get('email')?.touched}" required>
+                [ngClass]="{'is-invalid': myform.get('email')?.invalid && myform.get('email')?.touched}" required>
             </div>
 
             <!-- Password input -->
@@ -49,14 +49,14 @@
           </div>
 
           <div class="row-btns">
-            <div class="">
+            <div>
               <button type="submit" class="btn btn-danger">
                 Login
               </button>
 
             </div>
             <label class="text-secondary">or</label>
-            <div class="">
+            <div>
               <a (click)="sendToRegisterPage()" type="submit" class="text-primary text-decoration-none">
                 Sign up
               </a>

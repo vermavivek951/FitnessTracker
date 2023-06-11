@@ -17,8 +17,7 @@ export class RegistrationComponent {
     console.log(this.user);
     this.title.setTitle("Register");
   }
-  user: any = {};
-  isFormCorrect:boolean = true;
+  user:object= {};
   myform: FormGroup = this.formValiadtionService.myform;
  ngOnInit(){
  
@@ -35,11 +34,8 @@ export class RegistrationComponent {
     if(this.myform.valid){
       this.http.post('http://localhost:8080/user/register', this.user).subscribe(response => {
         console.log(response);
-  
       });
       this.router.navigate(['login']);
-    }else{
-      this.isFormCorrect = false;
     }
   }
 

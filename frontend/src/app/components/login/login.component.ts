@@ -29,26 +29,23 @@ export class LoginComponent {
       if (response.message === "Login Successful") {
         this.loggedIn = true;
         //use id 
-        this.getUserName();
+        this.setUsertoUserService();
         this._route.navigate(['home']); //user login sucessfull
       }
-    }, (_error: any) => {
+    },(_error: any) => {
+      console.log(_error);
       this.loginError = "Invalid Email or password";
-
-
     });
   }
 
   //check user based on their id
-  getUserName() {
+  setUsertoUserService() {
 
     this._http.get("http://localhost:8080/users").subscribe(response => {
-      const allUsers = Object.values(response) as any[];
-      for (const loginUser of allUsers) {
+      for (const loginUser of response as any[]) {
         if (loginUser.email == this.user.email) {
           // giving all details of logged user in userService
           this.userService.setUser(loginUser);
-          return this.userService.getUser().value.userName;
         }
       }
     });
