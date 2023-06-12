@@ -30,6 +30,7 @@ export class RegistrationComponent {
 
   // to send data to backend
   onSubmit() {
+    this.user = this.myform.value;  
     console.log(this.myform);
     if(this.myform.valid){
       this.http.post('http://localhost:8080/user/register', this.user).subscribe(response => {
@@ -38,6 +39,4 @@ export class RegistrationComponent {
       this.router.navigate(['login']);
     }
   }
-
-  
 }
