@@ -1,36 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { TitleService } from 'app/services/title.service';
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { workoutName: 'Push-Up Challenge', exercise: ['Push-ups','Diamond' ,'push-ups', 'Wide-push-ups'], addWorkout: 'H' },
-  { workoutName: 'Squat Power', exercise: ['Squats', 'Jump squats', 'Barbell squats'], addWorkout: 'H' },
-  { workoutName: 'Cardio Blast', exercise: ['Jumping jacks', 'High knees', 'Burpees'], addWorkout: 'H' },
-
-
-];
-export interface PeriodicElement {
-  workoutName: string;
-  exercise: any[];
-  // workoutVideo: number;
-  addWorkout: string;
-}
+import { WorkoutService } from 'app/workout.service';
 
 @Component({
   selector: 'app-workoutplan',
   templateUrl: './workoutplan.component.html',
-  styleUrls: ['./workoutplan.component.scss']
+  styleUrls: ['./workoutplan.component.scss'],
+  providers:[WorkoutService]
 })
 export class WorkoutplanComponent implements OnInit {
   show: string = "btns";
   panelOpenState = false;
   displayedColumns: string[] = ['workoutName', 'exercise', 'addWorkout'];
-  ds = ELEMENT_DATA;
+  
   isOpen = false;
   isSubmitted: boolean = false;
   dataList: any[] = ['Arms', 'Leg', 'Abs', 'Back'];
-  
-  constructor(private titleService: TitleService,private router : Router) {
+  ds = this.workout.getWorkoutTypes();
+  constructor(private titleService: TitleService,private router : Router,private workout:WorkoutService) {
     this.titleService.setTitle("Workout Plan");
   }
   // operation(name: string) {
