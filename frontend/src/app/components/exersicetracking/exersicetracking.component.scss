@@ -35,4 +35,17 @@ h1 {
     justify-content: center;
     height: 100vh;
   }
-    
+
+.wthtTracker {
+  position: absolute;
+  top: 1rem;
+  right: 1.9rem;
+  background-color: #1b697d;
+  border-radius: 8px;
+}
+
+.childwthtTracker{
+  padding-top: 9px;
+  padding-left: 12px;
+  padding-right: 12px;
+}

@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GoalhomeComponent } from './components/goalhome/goalhome.component';
 import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
 import { GoalSettingComponent } from './components/goal-setting/goal-setting.component';
+import { HtwtcompComponent } from './components/htwtcomp/htwtcomp.component';
 
 const routes: Routes = [
   { path: '', component: RegistrationComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'recommendations', component: RecommendationsComponent },
   { path: 'history', component: WorkouthistoryComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'exertracking/heightweighttracking', component: HtwtcompComponent},
   { path: '**', component: ErrorPageComponent },
 ];
 
