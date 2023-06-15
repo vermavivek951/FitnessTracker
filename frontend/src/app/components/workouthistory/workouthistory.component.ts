@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'app/services/title.service';
-import { WorkoutService } from 'app/workout.service';
+import { WorkoutService } from 'app/services/workout.service';
+
 
 
 
@@ -8,17 +9,16 @@ import { WorkoutService } from 'app/workout.service';
   selector: 'app-workouthistory',
   templateUrl: './workouthistory.component.html',
   styleUrls: ['./workouthistory.component.scss'],
-  providers:[WorkoutService]
-
+  providers: [WorkoutService]
 })
 
 export class WorkouthistoryComponent implements OnInit {
 
-  displayedColumns: string[] = ['workoutName', 'workoutType', 'workoutDuration', 'date','sets'];
-  ds =this.workout.getData();
- 
+  displayedColumns: string[] = ['workoutName', 'workoutType', 'workoutDuration', 'date', 'sets'];
+  ds = this.workout.getData();
 
-  constructor(private titleService:TitleService, private workout:WorkoutService) { 
+
+  constructor(private titleService: TitleService, private workout: WorkoutService) {
     this.titleService.setTitle("Workout History");
   }
 

@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'app/services/title.service';
 import { UserService } from 'app/services/user.service';
@@ -15,27 +16,45 @@ export class RecommendationsComponent implements OnInit {
   }
 
   receiveVariable(variable: number) {
-    this.calorie = variable;
-    if (this.calorie > this.requiredCalories) {
+    this.calorieAdded = variable;
+    if (this.calorieAdded > this.maxRequiredCalories) {
       alert("You are taking more calories");
       this.moreCalorie = true;
     } else {
       this.moreCalorie = false;
     }
   }
-
+  calorieAdded: number = 0;
+  UserGender!: string;
   BMR: number = 0;
-  calorie: number = 0;
+  userCalorie: number = 2000;
   activity_factor: number = 1.2;
-  age: number = 2;
+  UserAge: number = 2;
   openClicked = false;
   setCustomClicked = false;
-  requiredCalories: number = 1200;
+  maxRequiredCalories: number = 2400; //default requiredCalorie
+  minRequiredCalories!: number; //default minimum calorie
   saved: boolean = false;
   ngOnInit(): void {
     this.userService.userSubject.subscribe((userData) => {
+      this.UserGender = userData.gender;
+      //to get the required calorie from table
+      this.requiredCalorieRange.forEach(value => {
+
+        if (userData.age >= value.range.min_age && userData.age <= value.range.max_age) {
+          if (userData.gender == "Male") {
+            this.maxRequiredCalories = value.male_calorie_range.max_cal;
+            this.minRequiredCalories = value.male_calorie_range.min_cal;
+          } else if (userData.gender == "Female") {
+            this.maxRequiredCalories = value.female_calorie_range.max_cal;
+            this.minRequiredCalories = value.female_calorie_range.min_cal;
+
+          }
+          console.log(this.minRequiredCalories);
+        }
+      });
       console.log(userData);
-      this.age = userData.age;
+      this.UserAge = userData.age;
       // for other's ? will be BMR 
       if (userData.gender == "Male") {
         this.BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * userData.age) + 5;
@@ -52,19 +71,43 @@ export class RecommendationsComponent implements OnInit {
       else if (userData.workouts.length > 7)
         this.activity_factor = 1.9;
       // calorie calculation
-      this.requiredCalories = this.BMR * this.activity_factor;
+      this.userCalorie = this.BMR * this.activity_factor;
 
     })
 
   }
   sideBarOpen = true;
 
+  bagItemsRecieved: any[] = [];
+
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
+  receivedBagItems(event: any) {
+    for (const item in event) {
+      const val = event[item];
+      const key = item;
+      this.bagItemsRecieved.push({ key: key, value: val })
+
+    }
+
+    console.log(this.bagItemsRecieved);
+
+
+
+  }
+
   saveCustomNutrition() {
-    this.saved = true;
+    if (this.calorieAdded < this.minRequiredCalories) {
+      alert("Add atleast " + this.minRequiredCalories + " calorie to proceed");
+      this.saved = true;
+    } else if (this.calorieAdded > this.maxRequiredCalories) {
+      alert("Maximum of " + this.maxRequiredCalories + " calorie can be added.");
+      this.saved = true;
+    }
+    this.saved = !this.saved;
+
   }
 
   nutritions = {
@@ -114,69 +157,52 @@ export class RecommendationsComponent implements OnInit {
     ]
   }
 
-  requiredCalorieRange =
+  requiredCalorieRange = [
     {
-      "age_groups": [
-        {
-          "ranges": [
-            {
-              'range': { 'min_age': 1, 'max_age': 3 },
-              "age": "1-3 years old",
-              "male_calorie_range": "1,000-1,400",
-              "female_calorie_range": "1,000-1,200"
-            },
-            {
-              'range': { 'min_age': 4, 'max_age': 8 },
-              "age": "4-8 years old",
-              "male_calorie_range": "1,200-1,800",
-              "female_calorie_range": "1,200-1,600"
-            },
-            {
-              'range': { 'min_age': 9, 'max_age': 13 },
-              "age": "9-13 years old",
-              "male_calorie_range": "1,600-2,200",
-              "female_calorie_range": "1,400-2,200"
-            }
-          ]
-        },
-        {
-          "ranges": [
-            {
-              'range': { 'min_age': 14, 'max_age': 18 },
-              "age": "14-18 years old",
-              "male_calorie_range": "2,000-3,200",
-              "female_calorie_range": "1,800-2,400"
-            }
-          ]
-        },
-        {
-          "ranges": [
-            {
-              'range': { 'min_age': 19, 'max_age': 30 },
-              "age": "19-30 years old",
-              "male_calorie_range": "2,400-3,000",
-              "female_calorie_range": "2,000-2,400"
-            },
-            {
-              'range': { 'min_age': 31, 'max_age': 50 },
-              "age": "31-50 years old",
-              "male_calorie_range": "2,200-3,000",
-              "female_calorie_range": "1,800-2,200"
-            },
-            {
-              'range': { 'min_age': 51, 'max_age': 200 },
-              "age": "51+ years old",
-              "male_calorie_range": "2,000-2,800",
-              "female_calorie_range": "1,600-2,200"
-            }
-          ]
-        }
-      ]
+      'range': { 'min_age': 1, 'max_age': 3 },
+      "age": "1-3 years old",
+      "male_calorie_range": { 'min_cal': 1000, 'max_cal': 1400 },
+      "female_calorie_range": { 'min_cal': 1000, 'max_cal': 1200 },
+    },
+    {
+      'range': { 'min_age': 4, 'max_age': 8 },
+      "age": "4-8 years old",
+      "male_calorie_range": { 'min_cal': 1200, 'max_cal': 1800 },
+      "female_calorie_range": { 'min_cal': 1200, 'max_cal': 1600 },
+    },
+    {
+      'range': { 'min_age': 9, 'max_age': 13 },
+      "age": "9-13 years old",
+      "male_calorie_range": { 'min_cal': 1600, 'max_cal': 2200 },
+      "female_calorie_range": { 'min_cal': 1400, 'max_cal': 2200 },
+    },
+    {
+      'range': { 'min_age': 14, 'max_age': 18 },
+      "age": "14-18 years old",
+      "male_calorie_range": { 'min_cal': 2000, 'max_cal': 3200 },
+      "female_calorie_range": { 'min_cal': 1800, 'max_cal': 2400 },
+    },
+    {
+      'range': { 'min_age': 19, 'max_age': 30 },
+      "age": "19-30 years old",
+      "male_calorie_range": { 'min_cal': 2400, 'max_cal': 3000 },
+      "female_calorie_range": { 'min_cal': 2000, 'max_cal': 2400 },
+    },
+    {
+      'range': { 'min_age': 31, 'max_age': 50 },
+      "age": "31-50 years old",
+      "male_calorie_range": { 'min_cal': 2200, 'max_cal': 3000 },
+      "female_calorie_range": { 'min_cal': 1800, 'max_cal': 2200 },
+    },
+    {
+      'range': { 'min_age': 51, 'max_age': 200 },
+      "age": "51+ years old",
+      "male_calorie_range": { 'min_cal': 2000, 'max_cal': 2800 },
+      "female_calorie_range": { 'min_cal': 1600, 'max_cal': 2200 },
     }
+  ]
 
 
-  // x+y+z = total
-  // 
   proteinFoods: any[] = [];
   carbohydrateFoods: any[] = [];
   fatFoods: any[] = [];
@@ -184,19 +210,16 @@ export class RecommendationsComponent implements OnInit {
   openFoodRecommendation() {
     // Arrays to store recommended foods for each category
     this.openClicked = !this.openClicked;
-    // Calculate the total calories required
-    const totalCalories = this.requiredCalories;
 
     // (25% protein, 55% carbohydrates, 20% fats 
     // Calculate the target amounts for each macronutrient
-    let proteinCalories = totalCalories * 0.25;
-    let carbohydrateCalories = totalCalories * 0.55;
-    let fatCalories = totalCalories * 0.20;
+    let proteinCalories = this.maxRequiredCalories * 0.25;
+    let carbohydrateCalories = this.maxRequiredCalories * 0.55;
+    let fatCalories = this.maxRequiredCalories * 0.20;
 
     console.log("protien:" + proteinCalories);
     console.log("carb:" + carbohydrateCalories);
     console.log("fat:" + fatCalories);
-    // console.log("protien:" + proteinGrams);
 
 
     // Iterate through the macronutrients and find matching foods
@@ -205,11 +228,11 @@ export class RecommendationsComponent implements OnInit {
 
         while (proteinCalories > 0) {
           for (const food of macronutrient.foods) {
-            const maxProtein = food.calories_per_serving.max_cal;
-            if (maxProtein <= proteinCalories) {
+            const minProtein = food.calories_per_serving.min_cal;
+            if (minProtein <= proteinCalories) {
               this.proteinFoods.push(food);
             }
-            proteinCalories -= maxProtein;
+            proteinCalories -= minProtein;
 
           }
         }
@@ -219,11 +242,11 @@ export class RecommendationsComponent implements OnInit {
       } else if (macronutrient.category === 'Carbohydrates') {
         while (carbohydrateCalories > 0) {
           for (const food of macronutrient.foods) {
-            const maxCarbohydrates = food.calories_per_serving.max_cal;
-            if (maxCarbohydrates <= carbohydrateCalories) {
+            const minCarbohydrates = food.calories_per_serving.min_cal;
+            if (minCarbohydrates <= carbohydrateCalories) {
               this.carbohydrateFoods.push(food);
             }
-            carbohydrateCalories -= maxCarbohydrates;
+            carbohydrateCalories -= minCarbohydrates;
           }
         }
         if (this.carbohydrateFoods.length === 0) {
@@ -232,11 +255,11 @@ export class RecommendationsComponent implements OnInit {
       } else if (macronutrient.category === 'Fats') {
         while (fatCalories > 0) {
           for (const food of macronutrient.foods) {
-            const maxFats = food.calories_per_serving.max_cal;
-            if (maxFats <= fatCalories) {
+            const minFats = food.calories_per_serving.min_cal;
+            if (minFats <= fatCalories) {
               this.fatFoods.push(food);
             }
-            fatCalories -= maxFats;
+            fatCalories -= minFats;
           }
         }
         if (this.fatFoods.length === 0) {
@@ -255,7 +278,7 @@ export class RecommendationsComponent implements OnInit {
 
   }
   openCustomRecommendations() {
-    this.setCustomClicked = true;
+    this.setCustomClicked = !this.setCustomClicked;
 
     //open stored database of previous recommendations
   }

@@ -1,6 +1,5 @@
-<div *ngIf="!appear" class="container">
-    <button *ngIf="totalcal>0" (click)="tableAppear()">show Saved</button>
-
+<div *ngIf="!isSaved" class="container">
+    <!-- <button *ngIf="totalcal>0" (click)="tableAppear()">show Saved</button> -->
     <h3>Carbohydrates</h3>
 
     <div class="row justify-content-around">
@@ -465,26 +464,3 @@
     </div>
 </div>
 
-<div *ngIf="appear">
-    <table class="table table-primary">
-        <thead class=" table table-secondary">
-            <tr>
-                <td>Nutrution Name</td>
-                <td>No. of Items</td>
-            </tr>
-        </thead>
-        <tbody *ngFor="let items of bagItems | keyvalue">
-
-            <tr *ngIf="items.value>0">
-                <td> {{items.key}}</td>
-                <td>{{items.value}}</td>
-            </tr>
-            
-        </tbody>
-        <tfoot class="table table-secondary" >
-            <tr>
-                 <td colspan="2">Total Calorie: {{totalcal}}</td>
-            </tr>
-        </tfoot>
-    </table>
-</div>

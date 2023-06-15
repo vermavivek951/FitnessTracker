@@ -4,23 +4,26 @@ thead {
     font-weight: bold;
     font-style: normal;
 }
+.highlight-gender{
+    color: rgb(61, 172, 27) !important;
+}
 .is-valid{
     border: 1px solid red;
     background-color: rgb(248, 116, 116);
 }
 
 .is-Age {
-    border: 2px solid rgb(255, 0, 0);
-    background-color: rgba(224, 233, 124, 0.452);
+    border: 2px dotted rgb(16, 149, 27);
 }
 .is-calorie{
+ 
     color:blue;
 }
 
 
 .cal-bar {
-    
-   color: rgb(129, 78, 11) !important;
+    font-size: large;
+   color: rgb(42, 142, 105) !important;
 }
 
 .btn:hover{
