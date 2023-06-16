@@ -4,36 +4,37 @@
   </mat-drawer>
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
- 
+
     <div class="container-fluid page">
       <div class="d-flex page__box p-3">Exercise Tracking</div>
       <div class="page__content shadow p-3 position-relative">
         <!-- <div class="page__content-data position-absolute text-center"> -->
-          <div class="page_container position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-            <div class="wthtTracker">
-              <a routerLink="heightweighttracking"  style="text-decoration: none; color:white;">
-                <div class="childwthtTracker">
-                  <p>Height and Weight Tracker</p>
-                </div>
-              </a>
-            </div>
-            <div>
-              <h1>You can Track The Workouts by Setting Your Goals</h1>
+        <div class="page_container position-relative p-4"
+          style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
+          <div class="wthtTracker">
+            <a routerLink="heightweighttracking" style="text-decoration: none; color:white;">
+              <div class="childwthtTracker">
+                <p>Calorie and Weight Tracker</p>
+              </div>
+            </a>
+          </div>
+          <div>
+            <h1>You can Track The Workouts by Setting Your Goals</h1>
             <div *ngFor="let data of dataArray">
-                <p>You spent {{data.Swiminput}} minutes for swimming</p>
-                <p>You spent {{data.Cycleinput}} minutes for Cycling</p>
-                <p>You spent {{data.Yogainput}} minutes for doing Yoga</p>
-                <p>You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
-                <p>You spent {{data.Runinput}} minutes for Running</p>
+              <p>You spent {{data.Swiminput}} minutes for swimming</p>
+              <p>You spent {{data.Cycleinput}} minutes for Cycling</p>
+              <p>You spent {{data.Yogainput}} minutes for doing Yoga</p>
+              <p>You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
+              <p>You spent {{data.Runinput}} minutes for Running</p>
             </div>
             <button (click)="displaychart()" style="border-radius: 8px;">Track</button>
             <br>
             <div>
-                <div style="height: 600px; width: 700px;">
-                    <canvas id="myChart"></canvas>
-             </div>
+              <div style="height: 600px; width: 700px;">
+                <canvas id="myChart"></canvas>
+              </div>
             </div>
-            </div>
+          </div>
 
         </div>
       </div>

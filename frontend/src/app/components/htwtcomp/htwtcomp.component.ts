@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { UserService } from 'app/services/user.service';
 import { Chart, registerables, scales } from 'chart.js';
 
 @Component({
@@ -6,16 +7,18 @@ import { Chart, registerables, scales } from 'chart.js';
   templateUrl: './htwtcomp.component.html',
   styleUrls: ['./htwtcomp.component.scss']
 })
-export class HtwtcompComponent implements OnInit{
+export class HtwtcompComponent implements OnInit {
   entries: any[] = [];
   date: string = new Date().toISOString().substr(0, 10); // Initialize with today's date
-  height: number = 0;
+  // height: number = 0;
+  calorie!: number;
   weight: number = 0;
   chart: Chart | undefined;
-
+  constructor(private userService: UserService) { }
   ngOnInit(): void {
     Chart.register(...registerables);
   }
+
   sideBarOpen = true;
 
   sideBarToggler() {
@@ -23,15 +26,16 @@ export class HtwtcompComponent implements OnInit{
   }
 
   addEntry() {
-    if (this.date && this.height && this.weight) {
+    this.calorie = this.userService.getUserCalorie(this.weight);
+    console.log(this.calorie);
+    if (this.date && this.weight) {
       const entry = {
         date: this.date,
-        height: this.height,
+        calorie: this.calorie,
         weight: this.weight
       };
       this.entries.push(entry);
       this.date = '';
-      this.height = 0;
       this.weight = 0;
       this.updateChart();
     }
@@ -39,12 +43,12 @@ export class HtwtcompComponent implements OnInit{
 
   updateChart() {
     const labels = this.entries.map(entry => entry.date);
-    const heights = this.entries.map(entry => entry.height);
+    const calories = this.entries.map(entry => entry.calorie);
     const weights = this.entries.map(entry => entry.weight);
 
     if (this.chart) {
       this.chart.data.labels = labels;
-      this.chart.data.datasets[0].data = heights;
+      this.chart.data.datasets[0].data = calories;
       this.chart.data.datasets[1].data = weights;
       this.chart.update();
     } else {
@@ -55,8 +59,8 @@ export class HtwtcompComponent implements OnInit{
           labels: labels,
           datasets: [
             {
-              label: 'Height (cm)',
-              data: heights,
+              label: 'Calorie (cal)',
+              data: calories,
               borderColor: 'rgba(75, 192, 192, 1)',
               fill: false
             },

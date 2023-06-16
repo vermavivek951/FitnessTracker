@@ -9,13 +9,7 @@ export class UserAuthService {
   constructor() { }
   userAuthenticated: boolean = false;
   isUserAuthenticatedSubject = new BehaviorSubject(this.userAuthenticated);
-  setAuthentication(logged: boolean){
+  setAuthentication(logged: boolean) {
     this.isUserAuthenticatedSubject.next(logged);
-  }
-  getAuthentication(): boolean{
-    this.isUserAuthenticatedSubject.subscribe(isLogged =>{
-      this.userAuthenticated = isLogged;
-    });
-    return this.userAuthenticated;
   }
 }

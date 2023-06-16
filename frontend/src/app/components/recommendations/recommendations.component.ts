@@ -32,15 +32,19 @@ export class RecommendationsComponent implements OnInit {
   UserAge: number = 2;
   openClicked = false;
   setCustomClicked = false;
-  maxRequiredCalories: number = 2400; //default requiredCalorie
-  minRequiredCalories!: number; //default minimum calorie
+  maxRequiredCalories!: number;
+  minRequiredCalories!: number;
   saved: boolean = false;
+  UserWeight!:number;
   ngOnInit(): void {
+    
     this.userService.userSubject.subscribe((userData) => {
       this.UserGender = userData.gender;
-      //to get the required calorie from table
+      this.UserAge = userData.age;
+      this.UserWeight = userData.weight;
+      
+      //to get the max and min calorie required from table
       this.requiredCalorieRange.forEach(value => {
-
         if (userData.age >= value.range.min_age && userData.age <= value.range.max_age) {
           if (userData.gender == "Male") {
             this.maxRequiredCalories = value.male_calorie_range.max_cal;
@@ -53,27 +57,10 @@ export class RecommendationsComponent implements OnInit {
           console.log(this.minRequiredCalories);
         }
       });
-      console.log(userData);
-      this.UserAge = userData.age;
-      // for other's ? will be BMR 
-      if (userData.gender == "Male") {
-        this.BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * userData.age) + 5;
-      } else {
-        this.BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * userData.age) - 161;
-      }
-      // getting activity_factor if one workout allowed perday
-      if (userData.workouts.length > 0 && userData.workouts.length <= 3)
-        this.activity_factor = 1.375;
-      else if (userData.workouts.length > 3 && userData.workouts.length <= 5)
-        this.activity_factor = 1.55;
-      else if (userData.workouts.length > 5 && userData.workouts.length <= 7)
-        this.activity_factor = 1.725;
-      else if (userData.workouts.length > 7)
-        this.activity_factor = 1.9;
-      // calorie calculation
-      this.userCalorie = this.BMR * this.activity_factor;
-
+      
     })
+    this.userCalorie = this.userService.getUserCalorie(this.UserWeight);
+    console.log("user cal:" + this.userCalorie)
 
   }
   sideBarOpen = true;

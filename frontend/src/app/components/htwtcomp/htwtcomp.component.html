@@ -1,51 +1,52 @@
 <mat-drawer-container class="body">
-    <mat-drawer mode="side" [opened]="sideBarOpen">
-      <app-sidenav></app-sidenav>
-    </mat-drawer>
-    <mat-drawer-content>
-      <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
-   
-      <div class="container-fluid page">
-        <div class="d-flex page__box p-3 mt-2">Height and Weight Tracker</div>
-        <div class="page__content shadow p-3 position-relative">
-          <!-- <div class="page__content-data position-absolute text-center"> -->
-            <div class="page_container position-relative p-4" style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
-             
-              
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
 
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Height (cm)</th>
-                      <th>Weight (kg)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let entry of entries">
-                      <td>{{ entry.date | date }}</td>
-                      <td>{{ entry.height }}</td>
-                      <td>{{ entry.weight }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                
-                <div class="containerr">
-                  <div>
-                    <input type="date" [(ngModel)]="date" required>
-                    <input type="number" placeholder="Height (cm)" [(ngModel)]="height" required>
-                    <input type="number" placeholder="Weight (kg)" [(ngModel)]="weight" required>
-                    <button (click)="addEntry()">Add</button>
-                  </div>
-                  
-                  <div style="height: 400px; width: 600px;">
-                    <canvas id="chart"></canvas>
-                  </div>
-                </div>
-                
-  
+    <div class="container-fluid page">
+      <div class="d-flex page__box p-3 mt-2">Calorie and Weight Tracker</div>
+      <div class="page__content shadow p-3 position-relative">
+        <!-- <div class="page__content-data position-absolute text-center"> -->
+        <div class="page_container position-relative p-4"
+          style="font-size: small; width: 100%; min-height: calc(100vh - 200px)">
+
+
+
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Calorie (cal)</th>
+                <th>Weight (kg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of entries">
+                <td>{{ entry.date | date }}</td>
+                <td>{{ entry.calorie }}</td>
+                <td>{{ entry.weight }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="containerr">
+            <div>
+              <input type="date" [(ngModel)]="date" required>
+              <!-- <input type="number" placeholder="Height (cm)" [(ngModel)]="height" required> -->
+              <input type="number" placeholder="Weight (kg)" [(ngModel)]="weight" required>
+              <button (click)="addEntry()">Add</button>
+            </div>
+
+            <div style="height: 400px; width: 600px;">
+              <canvas id="chart"></canvas>
+            </div>
           </div>
+
+
         </div>
       </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
