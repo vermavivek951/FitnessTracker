@@ -1,18 +1,29 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
-
+export interface items{
+  key:string, value: number
+}
 
 @Component({
   selector: 'app-custom-nutrition-recomendation',
   templateUrl: './custom-nutrition-recomendation.component.html',
   styleUrls: ['./custom-nutrition-recomendation.component.scss']
 })
-export class CustomNutritionRecomendationComponent {
+export class CustomNutritionRecomendationComponent implements OnChanges {
+  ngOnChanges(): void {
+    if (this.isSaved) {
+      alert("saved");
+      this.bagItemEvent.emit(this.bagItems);
+    }
+  }
   @Input()
   calorie: any;
   @Input()
   isSaved: any;
   @Output() variableEvent = new EventEmitter<number>();
+
+  @Output()
+  bagItemEvent = new EventEmitter();
 
 
   bagItems = {
@@ -45,17 +56,6 @@ export class CustomNutritionRecomendationComponent {
   }
   appear = false;
   totalcal = 0;
-  customNutrition: any[] = [];
-
-
-  saveCustomNutrition() {
-    this.customNutrition.push(this.bagItems);
-    alert("saved");
-  }
-
-  tableAppear() {
-    this.appear = true;
-  }
 
 
   addFood(val: string) {

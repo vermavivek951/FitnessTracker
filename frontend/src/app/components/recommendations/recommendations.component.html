@@ -5,15 +5,15 @@
   <mat-drawer-content>
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <div class="container-fluid page">
-      <div class="d-flex page__box p-3 mt-2">Nutritional Recommendations</div>
+      <div class="d-flex page__box p-3 ">Nutritional Recommendations</div>
       <div class="page__content shadow p-3 position-realtive">
-        <div *ngIf="setCustomClicked" class="d-flex flex-row pb-2" style="justify-content: space-between;">
+        <div *ngIf="setCustomClicked && !saved" class="d-flex flex-row pb-2" style="justify-content: space-between;">
 
-          <div [ngClass]="{'is-valid': calorie > requiredCalories}" class="cal-bar float-end p-2">
-            Total Calorie: {{calorie}} / {{requiredCalories}}
+          <div [ngClass]="{'is-valid': calorieAdded> maxRequiredCalories}" class="cal-bar float-end p-2">
+            Total Calorie: {{calorieAdded}} / {{maxRequiredCalories}}
           </div>
           <div>
-            <button (click)="saveCustomNutrition()" style="color: white;" class="btn btn-success">Add to List
+            <button (click)="saveCustomNutrition()" style="color: white;" class="btn btn-success">Show Added
             </button>
           </div>
         </div>
@@ -25,8 +25,8 @@
           <div class="row" *ngIf="!openClicked && !setCustomClicked">
             <!-- total calorie of user: -->
             <i>According to Mifflin-St. Jeor equation, Your Calorie:<b
-                [ngClass]="{'is-calorie': calorie!=0}">{{requiredCalories}}</b>
-              and the <u>average calorie for {{age}} years old</u> should be<br>
+                [ngClass]="{'is-calorie': userCalorie!=0}">{{userCalorie}}</b>
+              and the <u>average calorie for {{UserAge}} years old {{UserGender}}</u> should be<br>
               <br></i>
             <Table class="table table- table-secondary">
               <thead class="table-primary">
@@ -36,12 +36,20 @@
                   <td>Female Calorie Range</td>
                 </tr>
               </thead>
-              <tbody *ngFor="let ageGroup of requiredCalorieRange.age_groups">
-                <tr *ngFor="let range of ageGroup.ranges"
-                  [ngClass]="{'is-Age': ((range.range.min_age <= age) && (range.range.max_age)>=age) }">
-                  <td>{{range.age}}</td>
-                  <td>{{range.male_calorie_range}}</td>
-                  <td>{{range.female_calorie_range}}</td>
+              <tbody>
+                <tr *ngFor="let ageGroup of requiredCalorieRange"
+                  [ngClass]="{'is-Age': ((UserAge >= ageGroup.range.min_age) && (UserAge <= ageGroup.range.max_age)) }">
+                  <td
+                    [ngClass]="{'highlight-gender':((UserAge >= ageGroup.range.min_age) && (UserAge <= ageGroup.range.max_age)) }">
+                    {{ageGroup.age}}</td>
+                  <td
+                    [ngClass]="{'highlight-gender':( UserGender === 'Male' && ((UserAge >= ageGroup.range.min_age) && (UserAge <= ageGroup.range.max_age)) ) }">
+                    {{ageGroup.male_calorie_range.min_cal | number}} - {{ageGroup.male_calorie_range.max_cal | number}}
+                  </td>
+                  <td
+                    [ngClass]="{'highlight-gender':( UserGender === 'Female' && ((UserAge >= ageGroup.range.min_age) && (UserAge <= ageGroup.range.max_age)) ) }">
+                    {{ageGroup.female_calorie_range.min_cal | number}} - {{ageGroup.female_calorie_range.max_cal |
+                    number}}</td>
                 </tr>
               </tbody>
             </Table>
@@ -49,8 +57,7 @@
               Recommendations</button><br>
             <button (click)="openCustomRecommendations()" class="btn btn-secondary text-white mt-4">Custom
               Recommendation</button>
-            <!-- <button (click)="openRecommendationHistory()" class="btn btn-secondary text-white mt-4">Show Previous
-                Recommendations</button> -->
+
 
           </div>
 
@@ -124,13 +131,48 @@
             </label><br>
 
           </div>
+
+
           <div *ngIf="setCustomClicked">
-            <app-custom-nutrition-recomendation [calorie]="calorie" [isSaved]="saved"
+            <app-custom-nutrition-recomendation [calorie]="userCalorie" [isSaved]="saved"
+              (bagItemEvent)="receivedBagItems($event)"
               (variableEvent)="receiveVariable($event)"></app-custom-nutrition-recomendation>
           </div>
+
+          <div *ngIf="saved">
+
+            <table class="table table-primary">
+              <thead class=" table table-secondary">
+                <tr>
+                  <td>Nutrution Name</td>
+                  <td>No. of Items</td>
+                </tr>
+              </thead>
+              <ng-container *ngFor="let items of bagItemsRecieved" ;>
+                <tbody>
+                  <tr *ngIf="items.value > 0">
+                    <td> {{items.key}}</td>
+                    <td>{{items.value}}</td>
+                  </tr>
+                </tbody>
+              </ng-container>
+              <tfoot class="table table-secondary">
+                <tr>
+                  <td colspan="2">Total Calorie: {{calorieAdded}}</td>
+                </tr>
+              </tfoot>
+            </table>
+
+
+          </div>
+
+
         </div>
       </div>
     </div>
+
+
+
 
 
 

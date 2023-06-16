@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TitleService } from 'app/services/title.service';
+import { UserAuthService } from 'app/services/user-auth.service';
 import { UserService } from 'app/services/user.service';
 
 @Component({
@@ -15,11 +16,12 @@ export class ProfileComponent {
   height!:string;
   gender!:string;
   allowEdit = false;
-  constructor(private titleService:TitleService, private userService:UserService){
+
+
+  constructor(private userAuthService: UserAuthService ,private titleService:TitleService, private userService:UserService){
     this.titleService.setTitle("Profile");
   }
   ngOnInit(){
-
     this.userService.userSubject.subscribe((user:any)=>{
       this.email = user.email;
       this.name = user.username;
