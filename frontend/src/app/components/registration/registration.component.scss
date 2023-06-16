@@ -1,13 +1,23 @@
-.put-in-row{
+.custom-container-reg {
+  gap: 32px;
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.put-in-row {
   display: flex;
   gap: 10px;
 }
 
-.card{
+.card {
   background-color: rgba(240, 248, 255, 0.799);
   color: rgb(3, 129, 240);
 }
 
-.hint{
+.hint {
   color: rgba(74, 71, 71, 0.667);
 }
