@@ -20,11 +20,11 @@
             <div>
               <h1>You can Track The Workouts by Setting Your Goals</h1>
             <div *ngFor="let data of dataArray">
-                <p *ngIf="">You spent {{data.Swiminput}} minutes for swimming</p>
-                <p>You spent {{data.Cycleinput}} minutes for Cycling</p>
-                <p>You spent {{data.Yogainput}} minutes for doing Yoga</p>
-                <p>You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
-                <p>You spent {{data.Runinput}} minutes for Running</p>
+                <p *ngIf="data.Swiminput">You spent {{data.Swiminput}} minutes for swimming</p>
+                <p *ngIf="data.Cycleinput">You spent {{data.Cycleinput}} minutes for Cycling</p>
+                <p *ngIf="data.Yogainput">You spent {{data.Yogainput}} minutes for doing Yoga</p>
+                <p *ngIf="data.Exerciseinput">You spent {{data.Exerciseinput}} minutes for doing Exercises</p>
+                <p *ngIf="data.Runinput">You spent {{data.Runinput}} minutes for Running</p>
             </div>
             <button (click)="displaychart()" style="border-radius: 8px;">Track</button>
             <br>

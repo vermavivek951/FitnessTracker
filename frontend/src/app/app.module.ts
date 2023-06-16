@@ -30,7 +30,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
 import { DatePipe } from '@angular/common';
 import { CustomNutritionRecomendationComponent } from './components/recommendations/custom-nutrition-recomendation/custom-nutrition-recomendation.component';
-import { HtwtcompComponent } from './components/htwtcomp/htwtcomp.component';
+import { HtwtcompComponent } from './components/exersicetracking/htwtcomp/htwtcomp.component';
 @NgModule({
   declarations: [
     AppComponent,

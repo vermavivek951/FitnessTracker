@@ -12,7 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GoalhomeComponent } from './components/goalhome/goalhome.component';
 import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goals.component';
 import { GoalSettingComponent } from './components/goal-setting/goal-setting.component';
-import { HtwtcompComponent } from './components/htwtcomp/htwtcomp.component';
+import { HtwtcompComponent } from './components/exersicetracking/htwtcomp/htwtcomp.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
