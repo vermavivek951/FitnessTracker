@@ -31,7 +31,6 @@ import { AchievedGoalsComponent } from './components/achieved-goals/achieved-goa
 import { DatePipe } from '@angular/common';
 import { CustomNutritionRecomendationComponent } from './components/recommendations/custom-nutrition-recomendation/custom-nutrition-recomendation.component';
 import { HtwtcompComponent } from './components/exersicetracking/htwtcomp/htwtcomp.component';
-import { DummyComponent } from './components/dummy/dummy.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +51,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
     AchievedGoalsComponent,
     ErrorPageComponent,
     CustomNutritionRecomendationComponent,
-    HtwtcompComponent,
-    DummyComponent,
+    HtwtcompComponent
   ],
   imports: [
     BrowserModule,
