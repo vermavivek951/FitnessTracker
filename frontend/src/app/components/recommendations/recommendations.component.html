@@ -19,7 +19,6 @@
         </div>
 
 
-
         <div class="page_container position-relative p-4"
           style="display: flex; flex-direction: column ;font-size: small; width: 100%; min-height: calc(100vh - 200px)">
           <div class="row" *ngIf="!openClicked && !setCustomClicked">
@@ -131,14 +130,13 @@
             </label><br>
 
           </div>
-
-
+      
           <div *ngIf="setCustomClicked">
             <app-custom-nutrition-recomendation [calorie]="userCalorie" [isSaved]="saved"
-              (bagItemEvent)="receivedBagItems($event)"
-              (variableEvent)="receiveVariable($event)"></app-custom-nutrition-recomendation>
+              (bagItemEvent)="receivedBagItems($event)" (variableEvent)="receiveVariable($event)">
+            </app-custom-nutrition-recomendation>
           </div>
-
+        
           <div *ngIf="saved">
 
             <table class="table table-primary">

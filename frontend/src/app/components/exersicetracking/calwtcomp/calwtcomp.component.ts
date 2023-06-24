@@ -1,16 +1,15 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'app/services/user.service';
-import { Chart, registerables, scales } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
-  selector: 'app-htwtcomp',
-  templateUrl: './htwtcomp.component.html',
-  styleUrls: ['./htwtcomp.component.scss']
+  selector: 'app-calwtcomp',
+  templateUrl: './calwtcomp.component.html',
+  styleUrls: ['./calwtcomp.component.scss']
 })
-export class HtwtcompComponent implements OnInit {
+export class CalwtcompComponent {
   entries: any[] = [];
   date: string = new Date().toISOString().substr(0, 10); // Initialize with today's date
-  // height: number = 0;
   calorie!: number;
   weight: number = 0;
   chart: Chart | undefined;
@@ -31,7 +30,7 @@ export class HtwtcompComponent implements OnInit {
     if (this.date && this.weight) {
       const entry = {
         date: this.date,
-        calorie: this.calorie,
+        calorie: this.calorie / 1000,
         weight: this.weight
       };
       this.entries.push(entry);
@@ -59,7 +58,7 @@ export class HtwtcompComponent implements OnInit {
           labels: labels,
           datasets: [
             {
-              label: 'Calorie (cal)',
+              label: 'Calorie (Kcal)',
               data: calories,
               borderColor: 'rgba(75, 192, 192, 1)',
               fill: false
@@ -83,4 +82,5 @@ export class HtwtcompComponent implements OnInit {
       });
     }
   }
+
 }

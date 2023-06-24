@@ -1,0 +1,39 @@
+@import '../../home/home.component.scss';
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+input,
+button {
+    margin-right: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #4CAF
+}
+
+.containerr {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    // gap: 5px;
+}
+
+.chart-container {
+    position: absolute;
+    width: 100%;
+
+}

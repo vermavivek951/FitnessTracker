@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CardDataService } from 'app/services/card-data.service';
 import { DataService } from 'app/services/data.service';
 import { GoalsettingService } from 'app/services/goalsetting.service';
+import { TitleService } from 'app/services/title.service';
 import { IComp } from '../IComp';
 
 @Component({
@@ -12,6 +13,7 @@ import { IComp } from '../IComp';
   styleUrls: ['./goal-setting.component.scss']
 })
 export class GoalSettingComponent implements OnInit {
+
 
   isOpen = false;
   dataList: string[] = ['Swim', 'Eat'];
@@ -30,7 +32,9 @@ export class GoalSettingComponent implements OnInit {
   exerciseinput!: number;
   runinput!: number;
 
-  constructor(private goalsettingservice: GoalsettingService, private carddataservice: CardDataService, private datePipe: DatePipe, private router: Router, private dataservice: DataService) { }
+  constructor(private goalsettingservice: GoalsettingService, private carddataservice: CardDataService, private datePipe: DatePipe, private router: Router, private dataservice: DataService, private titleService: TitleService) {
+    this.titleService.setTitle("Goal Setting")
+  }
 
   setFormValues(button: string): void {
     this.formValues = this.carddataservice.getButtonValues(button);

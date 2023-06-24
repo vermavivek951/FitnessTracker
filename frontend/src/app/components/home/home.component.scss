@@ -2,9 +2,10 @@
     color: white;
     padding: 0 1rem 1rem;
     background: #f1f5f9;
+    min-width: 600px;
     &__box {
       min-height: 120px;
-      min-width: 500px;
+      // min-width: 600px;
       background: #1e293b;
       margin: 0 -1rem;
       font-size: 36px;
@@ -21,6 +22,8 @@
       
     }
   }
+
+ 
   .btn{
     color: blueviolet;
     &:hover{
@@ -45,7 +48,7 @@
   font-size: medium;
   font-family: 'Arial Narrow Bold', sans-serif;
   max-height: calc(100vh - 271px);
-  overflow-y: auto;
+  overflow-y: scroll;
   text-align: center;
   
 }
@@ -53,13 +56,12 @@
 .page_container::-webkit-scrollbar{
   display: none;
   width: 012px;
-  transition:2.3s;
 
   
 }
 
 ::-webkit-scrollbar-thumb{
-  background-color: rgba(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.173);
   border-radius: 6px;
 }
 

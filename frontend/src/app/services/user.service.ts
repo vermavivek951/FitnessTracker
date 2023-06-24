@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnDestroy {
   user: any = { email: '', username: 'DefaultUser', password: '', height: 67, weight: 56, age: 20, gender: 'Female' };
   userCalorie: number = 2000;
   userSubject = new BehaviorSubject(this.user);
+
+  ngOnDestroy(): void {
+    this.userSubject.unsubscribe();
+  }
+
   setUser(user: any) {
     this.userSubject.next(user);
   }
@@ -39,9 +44,8 @@ export class UserService {
       else if (userData.workouts.length > 7)
         activity_factor = 1.9;
       // calorie calculation
-      this.userCalorie = BMR * activity_factor;
     })
-    return this.userCalorie;
+    return this.userCalorie = BMR * activity_factor;
   }
 
 }

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormValidationService } from 'app/services/form-validation.service';
 import { TitleService } from 'app/services/title.service';
-import { UserAuthService } from 'app/services/user-auth.service';
 import { UserService } from 'app/services/user.service';
 
 @Component({
@@ -8,30 +9,45 @@ import { UserService } from 'app/services/user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
-  email!:string;
-  name!:string;
-  weight!:string;
-  age !:string;
-  height!:string;
-  gender!:string;
+export class ProfileComponent implements OnInit {
+  user!: any;
   allowEdit = false;
+  id!: string;
+  message:string = ""
+  saved: boolean = false;
 
-
-  constructor(private userAuthService: UserAuthService ,private titleService:TitleService, private userService:UserService){
+  constructor(private http: HttpClient, private formValidationService: FormValidationService, private titleService: TitleService, private userService: UserService) {
     this.titleService.setTitle("Profile");
+
+    userService.userSubject.subscribe(userData => {
+      this.user = userData;
+    })
+
   }
-  ngOnInit(){
-    this.userService.userSubject.subscribe((user:any)=>{
-      this.email = user.email;
-      this.name = user.username;
-      this.age = user.age;
-      this.weight = user.weight;
-      this.height = user.height;
-      this.gender = user.gender;
+  ngOnInit() {
+
+  }
+
+
+
+  enableEdit() {
+    this.allowEdit = true;
+  }
+
+  UpdateProfile() {
+    this.id = this.user.id;
+    this.saved = true;
+
+    this.http.put(`http://localhost:8080/users/${this.id}`, this.user).subscribe(response => {
+      // alert("Updated");
+      console.log(response);
+      this.userService.userSubject.next(this.user);
+      this.message = "Profile Updated Successfully!"
+      setTimeout(()=>{
+        this.saved = false;
+      },3000);
     })
   }
-
 
   sideBarOpen = true;
 
@@ -39,8 +55,6 @@ export class ProfileComponent {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  edit(){
-    this.allowEdit = !this.allowEdit;
-  }
+
 
 }

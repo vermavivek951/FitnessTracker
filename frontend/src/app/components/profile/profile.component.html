@@ -6,7 +6,10 @@
     <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header>
     <div class="container-fluid page">
       <div class="d-flex page__box p-4 ">Profile</div>
-      <div class="page__content shadow position-relative">
+      <div class="page__content shadow position-relative" style="margin-bottom: 24px;">
+        <div class="position-absolute alert alert-success" style="z-index: 1; bottom: 0%" *ngIf="saved">
+          {{message}}
+        </div>
         <div class="container d-flex align-items-center justify-content-center ">
           <div class="row">
             <div class="col">
@@ -15,92 +18,71 @@
                   <img src="./../../../assets/icon/user.png" class="card-img-top oval-shape mt-3" alt="...">
                 </div>
                 <div class="box">
-                  <form class="row w-100" action="">
-                    <div class="card-body">
-                      <div class="form-group">
-                        <label class=" font-weight-normal">Name</label>
-                        <input type="text" readonly class="form-control-plaintext" value="{{name}}">
-                      </div>
-                      <div class="form-group">
-                        <label class=" font-weight-normal">Email</label>
-                        <input type="text" readonly class="form-control-plaintext" value="{{email}}">
-                      </div>
+                  <div class="card-body">
 
-                      <div class="row">
-                        <div class="form-group col-md-6 col-sm-12">
-                          <label class=" font-weight-normal">Height</label>
-                          <input type="text" readonly class="form-control-plaintext" value="{{height}}">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label class=" font-weight-normal">Weight</label>
-                          <input type="text" readonly class="form-control-plaintext" value="{{weight}}">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="form-group col-md-6">
-                          <label class=" font-weight-normal">Age</label>
-                          <input type="text" readonly class="form-control-plaintext" value="{{age}}">
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label class=" font-weight-normal">Gender</label>
-                          <input type="text" readonly class="form-control-plaintext" value="{{gender}}">
-                        </div>
-                      </div>
-                      <!-- <div class="text-center mt-4">
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                          data-target="#exampleModal">Edit</button>
-                      </div> -->
+                    <div class="form-group">
+                      <label class=" font-weight-normal">Name</label>
+                      <input [(ngModel)]="user.username" type="text" [readonly]="!allowEdit"
+                        class="form-control  border-0" [value]="user.username"
+                        [ngClass]="{'form-control-plaintext': allowEdit}">
                     </div>
-                  </form>
+                    <div class="form-group">
+                      <label class=" font-weight-normal">Email</label>
+                      <input [ngClass]="{'form-control-plaintext': allowEdit}" [(ngModel)]="user.email" type="text"
+                        [readonly]="!allowEdit" class="form-control  border-0" [value]="user.email">
+                    </div>
+
+                    <div class="row">
+                      <div class="form-group col-md-6 col-sm-12">
+                        <label class=" font-weight-normal">Height</label>
+                        <input [ngClass]="{'form-control-plaintext': allowEdit}" [(ngModel)]="user.height" type="text"
+                          [readonly]="!allowEdit" class="form-control  border-0" [value]="user.height">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label class=" font-weight-normal">Weight</label>
+                        <input [ngClass]="{'form-control-plaintext': allowEdit}" [(ngModel)]="user.weight" type="text"
+                          [readonly]="!allowEdit" class="form-control  border-0" [value]="user.weight">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label class=" font-weight-normal">Age</label>
+                        <input [ngClass]="{'form-control-plaintext': allowEdit}" [(ngModel)]="user.age" type="text"
+                          [readonly]="!allowEdit" class="form-control  border-0" [value]="user.age">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="gender" class="hint">Select gender</label>
+                        <select [ngClass]="{'form-control-plaintext': allowEdit}" [(ngModel)]="user.gender"
+                          class="form-control  border-0" id="gender" required>
+                          <option [disabled]="true" value="select">Select the gender</option>
+                          <option [disabled]="!allowEdit" [selected]="(user.gender=='Male')?true:false" value="Male">
+                            Male
+                          </option>
+                          <option [disabled]="!allowEdit" [selected]="(user.gender=='Female')?true:false"
+                            value="Female">
+                            Female</option>
+                          <option [disabled]="!allowEdit" [selected]="(user.gender=='Other')?true:false" value="Other">
+                            Other</option>
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="row-btns mt-4 mb-4">
+                      <button *ngIf="!allowEdit" style="color: white !important;" type="button"
+                        class="btn btn-secondary" (click)="enableEdit()">Edit</button>
+                      <button *ngIf="allowEdit" style="color: white !important;" type="button" class="btn btn-success"
+                        (click)="UpdateProfile()">Save</button>
+                    </div>
+
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="">Name</label>
-                  <input type="text" class="form-control" value="{{name}}" />
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6 col-sm-12">
-                    <label>Height</label>
-                    <input type="text" class="form-control" value="{{height}}">
-                  </div>
-                  <div class="form-group col-md-6 col-sm-12">
-                    <label>Weight</label>
-                    <input type="text" class="form-control" value="{{weight}}">
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6 col-sm-12">
-                    <label>Age</label>
-                    <input type="text" class="form-control" value="{{age}}">
-                  </div>
-                  <div class="form-group col-md-6 col-sm-12">
-                    <label>Gender</label>
-                    <input type="text" class="form-control" value="{{gender}}">
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TitleService } from 'app/services/title.service';
 import { DataService } from 'app/services/data.service';
+import { TitleService } from 'app/services/title.service';
 import { Chart, registerables } from 'chart.js';
 import { IComp } from '../IComp';
 

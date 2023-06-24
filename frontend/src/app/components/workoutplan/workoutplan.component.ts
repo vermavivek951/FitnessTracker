@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { TitleService } from 'app/services/title.service';
 import { WorkoutService } from 'app/services/workout.service';
 
@@ -46,7 +46,7 @@ export class WorkoutplanComponent implements OnInit {
     this.isSubmitted = true;
   }
   goBack() {
-    window.location.reload();
+    this.isOpen = false;
   }
 
 }

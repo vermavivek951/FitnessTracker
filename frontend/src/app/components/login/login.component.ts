@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { TitleService } from '../../services/title.service';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from 'app/services/user.service';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormValidationService } from 'app/services/form-validation.service';
-import { Observable } from 'rxjs';
 import { UserAuthService } from 'app/services/user-auth.service';
+import { UserService } from 'app/services/user.service';
+import { TitleService } from '../../services/title.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

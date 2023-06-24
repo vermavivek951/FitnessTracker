@@ -73,7 +73,7 @@ body {
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 9999;
+
 }
 
 #contact-fitness #fitness-header {
@@ -178,10 +178,6 @@ body {
   position: relative;
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-}
 
 .overlay {
   position: fixed;
@@ -213,7 +209,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
-  z-index: 3;
+
 }
 
 .popup.active {

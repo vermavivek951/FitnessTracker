@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from 'app/services/title.service';
 import { UserService } from 'app/services/user.service';
@@ -73,8 +72,8 @@ export class RecommendationsComponent implements OnInit {
 
   receivedBagItems(event: any) {
     for (const item in event) {
-      const val = event[item];
       const key = item;
+      const val = event[item];
       this.bagItemsRecieved.push({ key: key, value: val })
 
     }

@@ -1,19 +1,11 @@
-.custom-container {
-  padding: 12px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #1C2B44;
 }
 
-.row-btns {
-  margin-top: 4%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+
 
 
 
@@ -22,7 +14,7 @@
   content: "";
   flex: 1;
   height: 1px;
-  background: #eee;
+  background: #2d1f1f;
 }
 
 @media (max-width: 650px) or (max-height: 650px) {
@@ -46,10 +38,3 @@
   justify-content: center;
 }
 
-
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #1C2B44;
-}

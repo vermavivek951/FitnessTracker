@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TitleService } from '../../services/title.service';
 import { HttpClient } from '@angular/common/http';
-import { UserService } from 'app/services/user.service';
-import { EmailValidator, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FormValidationService } from 'app/services/form-validation.service';
+import { UserService } from 'app/services/user.service';
+import { TitleService } from '../../services/title.service';
 
 
 @Component({

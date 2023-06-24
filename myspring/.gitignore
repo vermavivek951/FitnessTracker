@@ -12,6 +12,7 @@ myspring/.project
 myspring/.settings
 myspring/.springBeans
 myspring/.sts4-cache
+/application.properties
 
 ### IntelliJ IDEA ###
 .idea
