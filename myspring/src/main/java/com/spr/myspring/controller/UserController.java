@@ -84,15 +84,9 @@ public class UserController {
 
     @PutMapping("/users/{idd}")
     public ResponseEntity<?> updateUser(@PathVariable("idd") UUID idd, @RequestBody User user) {
-        // User user = userRepository.getUserById(idd);
         user.setId(idd);
         userRepository.save(user);
         return ResponseEntity.ok().build();
-        // user.setAge(newUser.g;
-        // user.setEmail(newUser.getEmail());
-        // user.setHeight(newUser.getHeight());
-        // user.setWeight(newUser.getWeight());
-        // user.setGender(newUser.getGender());
 
     }
 
