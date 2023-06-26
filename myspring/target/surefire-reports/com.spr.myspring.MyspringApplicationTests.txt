@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.spr.myspring.MyspringApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.602 s - in com.spr.myspring.MyspringApplicationTests

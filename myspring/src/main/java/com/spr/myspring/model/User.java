@@ -10,9 +10,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,98 +29,96 @@ public class User {
     private int weight;
     private int age;
     private String gender;
+    private byte[] content;
+    private String imagePath;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Workout> workouts;
 
-    
-    //constructors
-    public User() {
-        // Default constructor required by JPA
-    }
+    // //constructors
+    // public User() {
+    // // Default constructor required by JPA
+    // }
 
-    public User(String username, String password, String email, int height, int weight, int age, String gender) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.height = height;
-        this.weight = weight;
-        this.age = age;
-        this.gender = gender;
-    } 
+    // public User(String username, String password, String email, int height, int
+    // weight, int age, String gender) {
+    // this.username = username;
+    // this.password = password;
+    // this.email = email;
+    // this.height = height;
+    // this.weight = weight;
+    // this.age = age;
+    // this.gender = gender;
+    // }
 
-    
-    
-    
-    //getters and setters
-    public Set<Workout> getWorkouts() {
-        return workouts;
-    }
+    // //getters and setters
+    // public Set<Workout> getWorkouts() {
+    // return workouts;
+    // }
 
-    public void setWorkouts(Set<Workout> workouts) {
-        this.workouts = workouts;
-    }
-    public UUID getId() {
-        return id;
-    }
+    // public void setWorkouts(Set<Workout> workouts) {
+    // this.workouts = workouts;
+    // }
+    // public UUID getId() {
+    // return id;
+    // }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    // public void setId(UUID id) {
+    // this.id = id;
+    // }
 
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    // public String getEmail() {
+    // return email;
+    // }
+    // public void setEmail(String email) {
+    // this.email = email;
+    // }
 
+    // public int getHeight() {
+    // return height;
+    // }
 
-    public int getHeight() {
-        return height;
-    }
+    // public void setHeight(int height) {
+    // this.height = height;
+    // }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
+    // public int getWeight() {
+    // return weight;
+    // }
 
-    public int getWeight() {
-        return weight;
-    }
+    // public void setWeight(int weight) {
+    // this.weight = weight;
+    // }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
-    }
+    // public int getAge() {
+    // return age;
+    // }
 
-    public int getAge() {
-        return age;
-    }
+    // public void setAge(int age) {
+    // this.age = age;
+    // }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    // public String getGender() {
+    // return gender;
+    // }
 
-    public String getGender() {
-        return gender;
-    }
+    // public void setGender(String gender) {
+    // this.gender = gender;
+    // }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    
-    public String getUsername() {
-        return username;
-    }
+    // public String getUsername() {
+    // return username;
+    // }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    // public void setUsername(String username) {
+    // this.username = username;
+    // }
 
-    public String getPassword() {
-        return password;
-    }
+    // public String getPassword() {
+    // return password;
+    // }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    // public void setPassword(String password) {
+    // this.password = password;
+    // }
 }

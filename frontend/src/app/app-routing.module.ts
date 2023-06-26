@@ -15,6 +15,7 @@ import { WorkouthistoryComponent } from './components/workouthistory/workouthist
 import { WorkoutplanComponent } from './components/workoutplan/workoutplan.component';
 import { guardGuard } from './services/guard.guard';
 
+// import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', component: RegistrationComponent },
@@ -28,7 +29,16 @@ const routes: Routes = [
   { path: 'workout', component: WorkoutplanComponent, canActivate: [guardGuard] },
   { path: 'recommendations', component: RecommendationsComponent, canActivate: [guardGuard] },
   { path: 'history', component: WorkouthistoryComponent, canActivate: [guardGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [guardGuard] },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'home', component: HomeComponent},
+  { path: 'goalhome', component: GoalhomeComponent},
+  { path: 'goalhome/goalsets', component: GoalSettingComponent},
+  { path: 'goalhome/achievedgoals', component: AchievedGoalsComponent},
+  { path: 'tracking', component: ExersicetrackingComponent},
+  { path: 'workout', component: WorkoutplanComponent},
+  { path: 'recommendations', component: RecommendationsComponent},
+  { path: 'history', component: WorkouthistoryComponent},
+  { path: 'profile', component: ProfileComponent },
   { path: '**', component: ErrorPageComponent },
 ];
 

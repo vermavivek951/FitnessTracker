@@ -15,7 +15,8 @@ export class LoginComponent {
   constructor(private authService: UserAuthService, private formValidationService: FormValidationService, private _http: HttpClient, private _route: Router, private title: TitleService, private userService: UserService) {
     this.title.setTitle("Login");
   }
-
+  id!: number;
+  imageBlob!: Blob;
   loginError!: string;
   loggedIn: boolean = false;
   myform: FormGroup = this.formValidationService.myform;
@@ -29,12 +30,15 @@ export class LoginComponent {
       {
         next: (response: any) => {
           if (response.message === "Login Successful") {
-            this.loggedIn = true;
-            // setting authentication to true when user logs in
-            this.authService.setAuthentication(this.loggedIn);
+            // creating imageblob
+            var img: string = "./../../../assets/icon/user.png";
+            this._http.get(img, { responseType: 'blob' }).subscribe(blob => {
+              this.imageBlob = blob;
+            })
+
             //use id 
             this.setUsertoUserService();
-            this._route.navigate(['home']); //user login sucessfull
+
           }
         },
         error: (_error: any) => {
@@ -46,18 +50,35 @@ export class LoginComponent {
 
   //check user based on their id
   setUsertoUserService() {
-
     this._http.get("http://localhost:8080/users").subscribe(response => {
       for (const loginUser of response as any[]) {
         if (loginUser.email == this.user.email) {
+          this.loggedIn = true;
+          this.id = loginUser.id;
+
+
+          // setting authentication to true when user logs in
+          this.authService.setAuthentication(this.loggedIn);
+
           // giving all details of logged user in userService
           this.userService.setUser(loginUser);
+          // set default dp
+          if (loginUser.content == null) {
+            const formData: FormData = new FormData();
+            formData.append('file', this.imageBlob);
+            this._http.put(`http://localhost:8080/update/${this.id}`, formData, loginUser).subscribe((updatedUser: any) => {
+              next: this.userService.setUser(updatedUser);
+              console.log("updatedUser:", updatedUser);
+
+            })
+          }
+          this._route.navigate(['home']);//user login sucessfull
         }
       }
     });
   }
 
-  
+
   sendToRegisterPage() {
     this._route.navigate(['']);
 

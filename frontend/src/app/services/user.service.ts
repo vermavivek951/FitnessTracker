@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -5,7 +6,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService implements OnDestroy {
-  user: any = { email: '', username: 'DefaultUser', password: '', height: 67, weight: 56, age: 20, gender: 'Female' };
+  constructor(private http: HttpClient){
+
+  }
+  baseUrl:String = 'http://localhost:8080';
+  user: any = { email: '',  username: 'DefaultUser', password: '', height: 67, weight: 56, age: 20, gender: 'Female', imagePath:  "./../../../assets/icon/user.png" };
   userCalorie: number = 2000;
   userSubject = new BehaviorSubject(this.user);
 
@@ -19,7 +24,6 @@ export class UserService implements OnDestroy {
   getUser() {
     return this.userSubject;
   }
-
 
 
 

@@ -75,6 +75,7 @@
   align-items: center;
   flex-direction: column;
 }
-.read_only_input{
-  background-color: aqua;
+
+.form-control:disabled, select:disabled{
+  background-color: #e0e4eb3e;
 }

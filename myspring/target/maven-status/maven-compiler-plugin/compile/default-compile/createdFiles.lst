@@ -1,4 +1,10 @@
 com\spr\myspring\repository\UserRepository.class
 com\spr\myspring\controller\UserController.class
 com\spr\myspring\MyspringApplication.class
+com\spr\myspring\repository\WorkoutRepository.class
+com\spr\myspring\model\Exercise.class
+com\spr\myspring\controller\ExcerciseController.class
 com\spr\myspring\model\User.class
+com\spr\myspring\controller\WorkoutController.class
+com\spr\myspring\repository\ExerciseRepository.class
+com\spr\myspring\model\Workout.class

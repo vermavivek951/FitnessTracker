@@ -7,7 +7,7 @@ import com.spr.myspring.model.User;
 
 
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<User, UUID> {
     //User findByUsername(String username);
     User findByEmail(String email);
     Iterable<User> findAll();

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'app/services/user.service';
@@ -11,20 +12,24 @@ export class HeaderComponent implements OnInit {
   @Output()
   toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
-  userName!: string;
-  constructor(private router: Router, private userService: UserService) {
-
-  }
- 
-
-  ngOnInit(): void {
+  user!: any;
+  constructor(private router: Router, private userService: UserService, private http: HttpClient) {
     this.userService.userSubject.subscribe((user: any) => {
-      console.log(user);
-      this.userName = user.username;
+      this.user = user;
+      console.log("user in header:", user);
+      if (this.user.imagePath == null) {
+        this.user.imagePath = "data:image/png;base64," + user.content;
+      }
     });
   }
 
- 
+
+  ngOnInit(): void {
+
+
+  }
+
+
 
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
@@ -39,6 +44,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['profile']);
   }
 
-  
+
 
 }

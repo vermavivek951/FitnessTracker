@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+// import { MatAvatarModule } from '@angular/material/';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -68,8 +69,6 @@ import { WorkoutplanComponent } from './components/workoutplan/workoutplan.compo
     MatMenuModule,
     MatTableModule,
     MatDialogModule,
-    // GoalSettingModule,
-
 
   ],
   providers: [DatePipe],
