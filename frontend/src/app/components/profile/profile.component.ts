@@ -22,23 +22,20 @@ export class ProfileComponent implements OnInit {
 
   constructor(private http: HttpClient, private formValidationService: FormValidationService, private titleService: TitleService, private userService: UserService) {
     this.titleService.setTitle("Profile");
-    this.syncChanges();
+    this.userService.userSubject.subscribe(userData => {
+      this.user = userData;
+      if (this.user.imagePath == null) {
+        this.user.imagePath = "data:image/png;base64," + userData.content;
+      }
+    })
 
   }
   ngOnInit() {
     this.id = this.user.id;
     console.log(this.id);
-    this.http.get(`http://localhost:8080/users/${this.id}`).subscribe((response: any) => {
-      next: this.user.imagePath = "data:image/png;base64," + response.content;
-    })
+   
 
   }
-  syncChanges() {
-    this.userService.userSubject.subscribe(userData => {
-      this.user = userData;
-    })
-  }
-
 
 
   updateProfileImage(event: any) {
@@ -54,12 +51,12 @@ export class ProfileComponent implements OnInit {
         next: console.log("response:", response);
         const type = this.file.type;
         console.log(type);
-        try{
+        try {
           this.user.imagePath = `data:${type};base64,` + response.content;
 
-        }catch(error){
+        } catch (error) {
           console.log(error);
-          
+
         }
         this.userService.setUser(this.user);
       })
